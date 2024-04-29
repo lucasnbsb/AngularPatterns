@@ -1,7 +1,24 @@
 # Angular patterns.
 This is meant to be a knowlege base for the patterns that keep popping up in Angular projects.
 
-## Configuration:
+## How to use this repo:
+The project wiki documents the patterns and the problems they address, linking to the code with examples. Running the project with `npm run start` will show a menu with the implemented examples for the patterns.
+
+## Angular projects configuration:
+
+### ESLint:
+```
+ng add @angular-eslint/schematics
+```
+
+in the `settings.json` file:
+```json
+  "eslint.options": {
+    "extensions": [".ts", ".html"]
+  },
+
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html"]
+```
 
 ### Prettier:
 Format on save pretty much does not work on html unless you do a full file formatting on save. which is a git nightmare. 

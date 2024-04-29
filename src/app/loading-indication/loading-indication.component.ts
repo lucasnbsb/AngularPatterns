@@ -25,7 +25,7 @@ export class LoadingIndicationComponent {
 
   sendGlobalLoader() {
     // any observable can be wrapped with the global or local loaders
-    this.loading.withGlobalLoading(this.sendRequest()).subscribe((res) => {
+    this.loading.withGlobalLoading(this.sendRequest()).subscribe(() => {
       console.log('Global loading complete');
     });
   }
@@ -33,7 +33,7 @@ export class LoadingIndicationComponent {
   // local loaders take in keys so that you can have multiple local loaders at the same time
   // the 'global' key will trigger the global loader as well
   sendLocalLoader(key: string | string[]) {
-    this.loading.withLocalLoading(key, this.sendRequest()).subscribe((res) => {
+    this.loading.withLocalLoading(key, this.sendRequest()).subscribe(() => {
       console.log(`Local loading ${key} complete`);
     });
   }
