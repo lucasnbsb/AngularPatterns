@@ -1,0 +1,7 @@
+<div class="flex flex-col gap-2">
+  @for (route of routes; track $index) {
+    <button class="btn btn-outline btn-lg" [routerLink]="'/' + route.path">
+      {{ route.title }}
+    </button>
+  }
+</div>

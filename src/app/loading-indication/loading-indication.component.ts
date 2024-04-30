@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { delay, of } from 'rxjs';
 import { LoadingService } from '../shared/services/loading.service';
 
 @Component({
   selector: 'app-loading-indication',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './loading-indication.component.html',
 })
 export class LoadingIndicationComponent {

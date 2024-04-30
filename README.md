@@ -6,6 +6,18 @@ The project wiki documents the patterns and the problems they address, linking t
 
 ## Angular projects configuration:
 
+### Angular CLI:
+Set your default flags for the CLI early, this will save you a lot of time.
+
+```json
+  "@schematics/angular:component": {
+    "inlineTemplate": true,
+    "changeDetection": "OnPush",
+    "style": "none",
+    "skipTests": true // don't skip tests.
+  }
+```
+
 ### ESLint:
 ```
 ng add @angular-eslint/schematics
