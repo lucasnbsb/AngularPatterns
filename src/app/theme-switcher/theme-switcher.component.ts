@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CardLayoutComponent } from '../card-layout/card-layout.component';
+import { ThemeService } from '../shared/services/theme.service';
 
 @Component({
   selector: 'app-theme-switcher',
@@ -7,4 +8,6 @@ import { CardLayoutComponent } from '../card-layout/card-layout.component';
   imports: [CardLayoutComponent],
   templateUrl: './theme-switcher.component.html',
 })
-export class ThemeSwitcherComponent {}
+export class ThemeSwitcherComponent {
+  constructor(public theme: ThemeService) {}
+}
