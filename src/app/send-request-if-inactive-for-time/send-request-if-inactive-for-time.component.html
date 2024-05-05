@@ -1,12 +1,54 @@
-<app-card-layout title="Request if inactive">
+<app-card-layout title="Request if Inactive">
   <p>
-    Use case: If the user hasn't interacted with an element, request, etc in a set amount of time, send a request or
-    execute some code
+    Use case: If the user hasn't interacted with an element, request, etc in a
+    set amount of time, send a request or execute some code
   </p>
   <h3>Examples of usage:</h3>
   <ul>
-    <li>Poll a notification endpoint if the user hasn't opened the notification menu in the last few minutes</li>
-    <li>Check the health of an endpoint if a socket has't emmited a value in some time</li>
+    <li>
+      Poll a notification endpoint if the user hasn't opened the notification
+      menu in the last few minutes
+    </li>
+    <li>
+      Check the health of an endpoint if a socket has't emmited a value in some
+      time
+    </li>
     <li>Refresh a component after some time without interaction</li>
   </ul>
+  <i>
+    In this example every 5 seconds that the button is not clicked a message is
+    logged to the console
+  </i>
+  <div class="flex items-center justify-around">
+    <button class="btn btn-primary" (click)="sourceObserver$.next()">
+      Main interaction source <br />that resets the counter
+    </button>
+
+    <ng-container
+      *ngTemplateOutlet="
+        timeline;
+        context: { $implicit: this.counterObserver$ | async }
+      "
+    ></ng-container>
+    <ng-template #timeline let-counter>
+      <ul class="timelane-horizontal timeline timeline-compact max-h-fit py-0">
+        @for (
+          item of [0, 1, 2, 3, 4];
+          track item;
+          let i = $index;
+          let first = $first;
+          let last = $last
+        ) {
+          <li class="p-0">
+            <hr [class.bg-primary]="i < counter" *ngIf="!first" />
+            <div class="timeline-middle">
+              {{ i < counter ? (last ? '🚀' : '🟦') : '⬜️' }}
+            </div>
+            <div class="timeline-end timeline-box">{{ item }}</div>
+            <hr [class.bg-primary]="i + 1 < counter" *ngIf="!last" />
+          </li>
+        }
+      </ul>
+    </ng-template>
+  </div>
 </app-card-layout>

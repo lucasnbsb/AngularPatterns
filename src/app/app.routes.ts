@@ -5,13 +5,24 @@ import { SendRequestIfInactiveForTimeComponent } from './send-request-if-inactiv
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 
 export const routes: Routes = [
-  { path: 'loading', component: LoadingIndicationComponent, pathMatch: 'full', title: 'Loading Indication' },
-  { path: 'themes', component: ThemeSwitcherComponent, pathMatch: 'full', title: 'Theme Switcher' },
+  {
+    path: 'loading',
+    component: LoadingIndicationComponent,
+    pathMatch: 'full',
+    title: 'Service for Loading Indication',
+  },
+
   {
     path: 'ifInactive',
     component: SendRequestIfInactiveForTimeComponent,
     pathMatch: 'full',
     title: 'Request if Inactive',
+  },
+  {
+    path: 'themes',
+    component: ThemeSwitcherComponent,
+    pathMatch: 'full',
+    title: 'Theme Switcher',
   },
   { path: '**', component: MenuComponent, pathMatch: 'full', title: 'Menu' },
 ];
