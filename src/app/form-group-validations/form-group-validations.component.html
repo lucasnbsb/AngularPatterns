@@ -1,0 +1,51 @@
+<app-card-layout title="Form group validation">
+  <h3>Use case</h3>
+  <p>
+    You have a form field that needs to validate with the value of another field
+    dynamically, group them together and add a group validator.
+  </p>
+  <p>Range forms are the most common use case for this.</p>
+  <p>
+    Here we have age and drivers licence, people under 18 or over 70 shouldn't
+    drive
+  </p>
+  <form [formGroup]="formGroup">
+    <div class="flex gap-4">
+      <label class="form-control w-full max-w-xs">
+        <label
+          class="input input-primary flex w-full items-center gap-2"
+          [class.input-error]="formGroup.invalid"
+        >
+          <span class="material-symbols-outlined"> person </span>
+          <input
+            class="grow"
+            type="number"
+            placeholder="Age"
+            min="0"
+            max="120"
+            #age
+            formControlName="age"
+          />
+        </label>
+        @if (formGroup.invalid) {
+          <div class="label">
+            <span class="label-text-alt text-error"
+              >You shouldn't be driving</span
+            >
+          </div>
+        }
+      </label>
+      <div class="form-control">
+        <label class="label flex cursor-pointer items-center gap-2">
+          <span class="label-text">Drivers Licence?</span>
+          <input
+            type="checkbox"
+            formControlName="driversLicence"
+            class="checkbox-primary checkbox"
+            [class.input-error]="formGroup.invalid"
+          />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-card-layout>

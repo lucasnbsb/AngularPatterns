@@ -7,10 +7,18 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "inlineTemplate": true,
+          "inlineTemplate": false,
           "changeDetection": "OnPush",
           "style": "none",
           "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "path": "shared/services"
+        },
+        "@schematics/angular:pipe": {
+          "path": "shared/pipes",
+          "module": "pipes",
+          "export": true
         }
       },
       "root": "",
