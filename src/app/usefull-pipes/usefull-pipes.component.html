@@ -1,1 +1,79 @@
-<p>usefull-pipes works!</p>
+<app-card-layout
+  [title]="showView() ? labels[showView()!] : 'Pipes Menu'"
+  [backButtonToHome]="!showView()"
+  (backClicked)="show()"
+>
+  @switch (showView()) {
+    @case ('paginateArray') {
+      <p>
+        This is the simplest way to do pagination with good performance. Fetch a
+        chunk of data and pipe it to the screen.
+      </p>
+      <p>
+        The following is an array of numbers from 1 to 100 being paginated
+        through the pipe
+      </p>
+      <div>
+        {{ arrayForPagination | paginateArray: pageIndex() : pageSize | json }}
+      </div>
+      <div class="join">
+        <button
+          class="btn join-item"
+          [disabled]="pageIndex() <= 1"
+          (click)="pageIndex.set(pageIndex() - 1)"
+        >
+          «
+        </button>
+        <button class="btn join-item">Page {{ pageIndex() }}</button>
+        <button
+          class="btn join-item"
+          [disabled]="pageIndex() >= arrayForPagination.length / pageSize"
+          (click)="pageIndex.set(pageIndex() + 1)"
+        >
+          »
+        </button>
+      </div>
+    }
+
+    @case ('PossessiveForm') {
+      <p>
+        This <b>{{ 'pipe' | possessiveForm }}</b> utility is very narrow, might
+        be faster to write it than get it here
+      </p>
+    }
+
+    @case ('QuickSearch') {
+      <p>
+        Filter an array of objects by property value. best used for
+        autocompletes You could also pass a function into the array for more
+        flexibility, but i'm yet to need that much flexibility
+      </p>
+      <div class="flex flex-col gap-4">
+        <input
+          type="text"
+          class="input input-bordered w-full max-w-xs"
+          [(ngModel)]="searchTerm"
+          placeholder="Search term"
+        />
+        <div class="flex h-96 flex-col gap-2 overflow-y-auto">
+          <div
+            *ngFor="
+              let item of arrayForSearch | quickSearch: searchTerm() : 'name'
+            "
+          >
+            {{ item.name }}
+          </div>
+        </div>
+      </div>
+    }
+    @default {
+      <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        @for (key of keys; track $index) {
+          <button class="btn btn-outline btn-lg" (click)="show(key)">
+            {{ labels[key] }}
+          </button>
+        }
+      </div>
+    }
+  }
+</app-card-layout>

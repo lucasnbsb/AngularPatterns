@@ -4,6 +4,7 @@ import { LoadingIndicationComponent } from './loading-indication/loading-indicat
 import { MenuComponent } from './menu/menu.component';
 import { SendRequestIfInactiveForTimeComponent } from './send-request-if-inactive-for-time/send-request-if-inactive-for-time.component';
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
+import { UsefullPipesComponent } from './usefull-pipes/usefull-pipes.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,12 @@ export const routes: Routes = [
     component: FormGroupValidationsComponent,
     pathMatch: 'full',
     title: 'Form group validations',
+  },
+  {
+    path: 'pipes',
+    component: UsefullPipesComponent,
+    pathMatch: 'full',
+    title: 'Usefull Pipes',
   },
   {
     path: 'themes',

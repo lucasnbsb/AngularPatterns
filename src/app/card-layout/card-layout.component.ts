@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, EventEmitter, input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,4 +9,8 @@ import { RouterModule } from '@angular/router';
 })
 export class CardLayoutComponent {
   title = input.required<string>();
+  backButtonToHome = input<boolean>(true);
+  hideBackButton = input<boolean>(false);
+
+  @Output() backClicked = new EventEmitter<void>();
 }
