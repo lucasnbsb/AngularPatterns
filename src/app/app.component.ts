@@ -11,7 +11,5 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'AngularPatterns';
 
-  constructor() {
-    console.log('AppComponent constructor');
-  }
+  constructor() {}
 }

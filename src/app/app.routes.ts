@@ -11,9 +11,8 @@ export const routes: Routes = [
     path: 'loading',
     component: LoadingIndicationComponent,
     pathMatch: 'full',
-    title: 'Service for Loading Indication',
+    title: 'Loading Indicators',
   },
-
   {
     path: 'ifInactive',
     component: SendRequestIfInactiveForTimeComponent,
@@ -24,7 +23,7 @@ export const routes: Routes = [
     path: 'formGroups',
     component: FormGroupValidationsComponent,
     pathMatch: 'full',
-    title: 'Form group validations',
+    title: 'Form Group Validations',
   },
   {
     path: 'pipes',

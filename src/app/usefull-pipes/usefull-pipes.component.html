@@ -1,5 +1,5 @@
 <app-card-layout
-  [title]="showView() ? labels[showView()!] : 'Pipes Menu'"
+  [title]="showView() ? labels[showView()!] : 'Pipes'"
   [backButtonToHome]="!showView()"
   (backClicked)="show()"
 >
@@ -66,6 +66,80 @@
         </div>
       </div>
     }
+
+    @case ('timeframeInMinutes') {
+      <p>
+        Use case: The system had a scheduler screen and steps in a state machine
+        had variable intervals in between saved in minutes
+      </p>
+      <p>
+        This pipe translated the minutes to a textual description of the
+        interval of time
+      </p>
+      <div class="grid grid-cols-3 gap-2">
+        <div class="badge badge-neutral badge-lg">
+          0 - {{ 0 | timeframeInMinutesToText }}
+        </div>
+        <div class="badge badge-primary badge-lg">
+          30 - {{ 30 | timeframeInMinutesToText }}
+        </div>
+        <div class="badge badge-secondary badge-lg">
+          300 - {{ 300 | timeframeInMinutesToText }}
+        </div>
+        <div class="badge badge-accent badge-lg">
+          1440 - {{ 1440 | timeframeInMinutesToText }}
+        </div>
+        <div class="badge badge-ghost badge-lg">
+          2880 - {{ 2880 | timeframeInMinutesToText }}
+        </div>
+        <div class="badge">
+          129600 - {{ 129600 | timeframeInMinutesToText }}
+        </div>
+      </div>
+    }
+
+    @case ('offsetDateByBusinessDays') {
+      <p>
+        Use case: Something is going to happen in X business days. Don't ask me
+        anything about holidays, these have to be localized.
+      </p>
+      <p>Also don't be trying to go back in time</p>
+      <p class="flex items-center gap-2">
+        <span>Today +</span>
+        <input
+          type="number"
+          min="0"
+          class="input input-xs input-bordered"
+          [(ngModel)]="businessDays"
+          placeholder="Business days"
+        />
+        <span
+          >Business days =
+          {{ today | offsetByBusinessDays: businessDays() | date }}</span
+        >
+        {{ businessDays() | json }}
+      </p>
+    }
+
+    @case ('arrayAsText') {
+      <p>This is a silly little pipe and i've shipped this to production</p>
+
+      <p><b>Turns:</b> ['Mangoes', 'Pears', 'Apples', 'Bannanas']</p>
+
+      <p>
+        <b>Into:</b>
+        {{ ['Mangoes', 'Pears', 'Apples', 'Bannanas'] | arrayAsText }}
+      </p>
+    }
+
+    @case ('timeAgo') {
+      <p>Use case: usually to show the age of a notification</p>
+      <p>You have a date and wants to print how long ago it was</p>
+      <span>{{ today | date }} ➡️ {{ today | timeAgo }}</span>
+      <span>{{ lastWeek | date }} ➡️ {{ lastWeek | timeAgo }}</span>
+      <span>{{ lastMonth | date }} ➡️ {{ lastMonth | timeAgo }}</span>
+    }
+
     @default {
       <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         @for (key of keys; track $index) {

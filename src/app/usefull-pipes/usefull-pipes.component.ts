@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { OffsetByBusinessDaysPipe } from './../shared/pipes/offset-by-business-days.pipe';
 
 import {
   ChangeDetectionStrategy,
@@ -9,14 +10,15 @@ import {
 import { FormsModule } from '@angular/forms';
 import { CardLayoutComponent } from '../card-layout/card-layout.component';
 import { NatoAlphabet } from '../shared/constants/nato-alphabet';
-import { KeyInObjectPipe } from '../shared/pipes/key-in-object.pipe';
+import { ArrayAsTextPipe } from '../shared/pipes/array-as-text.pipe';
 import { PaginateArrayPipe } from '../shared/pipes/paginate-array.pipe';
 import { PossessiveFormPipe } from '../shared/pipes/possessive-form.pipe';
 import { QuickSearchPipe } from '../shared/pipes/quick-search.pipe';
+import { TimeAgoPipe } from '../shared/pipes/time-ago.pipe';
+import { TimeframeInMinutesPipe } from '../shared/pipes/timeframe-in-minutes.pipe';
 
 export type usefullPipes =
   | 'paginateArray'
-  | 'keyInObject'
   | 'PossessiveForm'
   | 'QuickSearch'
   | 'timeframeInMinutes'
@@ -31,10 +33,13 @@ export type usefullPipes =
     CardLayoutComponent,
     PaginateArrayPipe,
     CommonModule,
-    KeyInObjectPipe,
     PossessiveFormPipe,
     QuickSearchPipe,
     FormsModule,
+    TimeframeInMinutesPipe,
+    OffsetByBusinessDaysPipe,
+    ArrayAsTextPipe,
+    TimeAgoPipe,
   ],
   templateUrl: './usefull-pipes.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,7 +47,6 @@ export type usefullPipes =
 export class UsefullPipesComponent {
   labels: Record<usefullPipes, string> = {
     paginateArray: 'Paginate Array',
-    keyInObject: 'Key is in Object',
     PossessiveForm: 'Possessive Form',
     QuickSearch: 'Quick Search',
     timeframeInMinutes: 'Timeframe in Minutes',
@@ -60,15 +64,19 @@ export class UsefullPipesComponent {
   searchTerm: WritableSignal<string> = signal('');
   pageIndex: WritableSignal<number> = signal(1);
   pageSize = 5;
+  businessDays: WritableSignal<number> = signal(5);
+  today = new Date();
+  lastWeek = new Date();
+  lastMonth = new Date();
 
   show(view?: usefullPipes): void {
     this.showView.set(view);
   }
   constructor() {
-    console.log(this.arrayForPagination);
-
     NatoAlphabet.forEach((letter) => {
       this.arrayForSearch.push({ name: letter });
     });
+    this.lastWeek.setDate(this.today.getDate() - 7);
+    this.lastMonth.setDate(this.today.getDate() - 30);
   }
 }

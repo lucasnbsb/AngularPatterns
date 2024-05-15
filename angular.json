@@ -13,10 +13,10 @@
           "skipTests": true
         },
         "@schematics/angular:service": {
-          "path": "app/shared/services"
+          "path": "src/app/shared/services"
         },
         "@schematics/angular:pipe": {
-          "path": "app/shared/pipes",
+          "path": "src/app/shared/pipes",
           "module": "pipes",
           "export": true
         }
