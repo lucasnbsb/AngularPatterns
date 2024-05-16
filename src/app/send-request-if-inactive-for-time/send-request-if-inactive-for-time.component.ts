@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 import {
   BehaviorSubject,
   interval,
@@ -33,12 +35,14 @@ export class SendRequestIfInactiveForTimeComponent {
       .pipe(
         timeout({ each: this.interval, with: () => this.actionOnInactivity() }),
         repeat(),
+        takeUntilDestroyed(),
       )
-      .subscribe(() => {});
+      .subscribe();
 
     this.counterObserver$ = interval(1000).pipe(
       map((i) => i + 1), // increment the counter
       takeUntil(this.sourceObserver$),
+      takeUntilDestroyed(),
       take(5),
       repeat(),
     );

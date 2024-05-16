@@ -37,5 +37,10 @@ export const routes: Routes = [
     pathMatch: 'full',
     title: 'Theme Switcher',
   },
-  { path: '**', component: MenuComponent, pathMatch: 'full', title: 'Menu' },
+  {
+    path: '**',
+    component: MenuComponent,
+    pathMatch: 'full',
+    title: 'Angular Recipes',
+  },
 ];
