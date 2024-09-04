@@ -4,7 +4,7 @@ This is meant to be a knowlege base for the patterns that keep popping up in Ang
 
 ## How to use this repo:
 
-The project wiki documents the patterns and the problems they address, linking to the code with examples. Running the project with `npm run start` will show a menu with the implemented examples for the patterns.
+Running the project with `npm run start` will show a menu with the implemented examples for the patterns. Each pattern has the it's own folder in the app directive
 
 ## New Angular project configuration:
 

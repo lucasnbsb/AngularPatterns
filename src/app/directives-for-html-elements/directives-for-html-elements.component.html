@@ -1,0 +1,40 @@
+<app-card-layout
+  title="You should be using more directives"
+  [backButtonToHome]="true"
+>
+  <p>
+    Is the component you are creating better described as a "styled html
+    element"? If so, It should be a directive. Here's why:
+  </p>
+  <p>
+    If you wrap a native html element like a button into a component, then to
+    get the bare minimum feature parity you need to add most attributes for that
+    element as inputs to the component and then pipe them into the element.
+  </p>
+  <i
+    >Do you really want to be implementing
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertarget"
+      >popovertarget</a
+    >
+    into your buttons?</i
+  >
+
+  <p>
+    Instead write a directive and apply it to the desired element to style,
+    animate or add behavior. Daisy-ui-style classes are also an option here.
+  </p>
+
+  <p>Here's a bunch of buttons done with an example directive:</p>
+  <div class="flex items-center gap-1">
+    <button customButton variant="primary">Btn Primary</button>
+    <button customButton variant="secondary">Btn Secondary</button>
+    <button customButton variant="error">Btn Error</button>
+  </div>
+  <p>
+    <i
+      >Those are obviously usinig DaisyUi classes for styles, i'm not about to
+      write css in my free time</i
+    >
+  </p>
+</app-card-layout>

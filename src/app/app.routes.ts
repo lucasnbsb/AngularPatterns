@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { DirectivesForHtmlElementsComponent } from './directives-for-html-elements/directives-for-html-elements.component';
 import { FormGroupValidationsComponent } from './form-group-validations/form-group-validations.component';
 import { LoadingIndicationComponent } from './loading-indication/loading-indication.component';
 import { MenuComponent } from './menu/menu.component';
@@ -36,6 +37,12 @@ export const routes: Routes = [
     component: ThemeSwitcherComponent,
     pathMatch: 'full',
     title: 'Theme Switcher',
+  },
+  {
+    path: 'useMoreDirectives',
+    component: DirectivesForHtmlElementsComponent,
+    pathMatch: 'full',
+    title: 'Use more directives',
   },
   {
     path: '**',
