@@ -1,8 +1,14 @@
 <app-card-layout title="Recipes" [hideBackButton]="true">
   <div class="flex flex-col gap-2">
-    @for (route of routes; track $index) {
-      <button class="btn btn-outline btn-lg" [routerLink]="'/' + route.path">
+    @for (route of routes; track $index; let last = $last) {
+      <button
+        class="btn btn-outline btn-lg {{ last ? 'btn-info' : '' }}"
+        [routerLink]="'/' + route.path"
+      >
         {{ route.title }}
+        @if (last) {
+          🆕
+        }
       </button>
     }
   </div>
