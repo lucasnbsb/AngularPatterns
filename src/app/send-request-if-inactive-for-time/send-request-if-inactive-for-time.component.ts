@@ -24,14 +24,14 @@ import { CardLayoutComponent } from '../card-layout/card-layout.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SendRequestIfInactiveForTimeComponent {
-  sourceObserver$ = new Subject<void>();
+  sourceSubject$ = new Subject<void>();
   actionOnInactivity$ = new Subject<void>();
-  counterObserver$: Observable<number>;
+  counterSubject$: Observable<number>;
   interval = 5000;
   counter = new BehaviorSubject(0);
 
   constructor() {
-    this.sourceObserver$
+    this.sourceSubject$
       .pipe(
         timeout({ each: this.interval, with: () => this.actionOnInactivity() }),
         repeat(),
@@ -39,9 +39,9 @@ export class SendRequestIfInactiveForTimeComponent {
       )
       .subscribe();
 
-    this.counterObserver$ = interval(1000).pipe(
+    this.counterSubject$ = interval(1000).pipe(
       map((i) => i + 1), // increment the counter
-      takeUntil(this.sourceObserver$),
+      takeUntil(this.sourceSubject$),
       takeUntilDestroyed(),
       take(5),
       repeat(),

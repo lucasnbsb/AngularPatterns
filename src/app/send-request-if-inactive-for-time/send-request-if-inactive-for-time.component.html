@@ -20,14 +20,14 @@
     logged to the console
   </i>
   <div class="flex flex-col items-center justify-around pt-4 md:flex-row">
-    <button class="btn btn-primary" (click)="sourceObserver$.next()">
+    <button class="btn btn-primary" (click)="sourceSubject$.next()">
       Main interaction source <br />that resets the counter
     </button>
 
     <ng-container
       *ngTemplateOutlet="
         timeline;
-        context: { $implicit: this.counterObserver$ | async }
+        context: { $implicit: this.counterSubject$ | async }
       "
     ></ng-container>
     <ng-template #timeline let-counter>
@@ -53,4 +53,15 @@
       </ul>
     </ng-template>
   </div>
+
+  <p>
+    See
+    <a
+      href="https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/send-request-if-inactive-for-time/send-request-if-inactive-for-time.component.ts"
+      target="_blank"
+      rel="noreferrer"
+      >this component</a
+    >
+    for a look into the interaction of the observables
+  </p>
 </app-card-layout>

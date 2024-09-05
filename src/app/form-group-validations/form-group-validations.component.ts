@@ -12,12 +12,14 @@ import { AgeDriversLicenceValidator } from '../shared/validators/age-drivers-lic
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormGroupValidationsComponent {
+  limitAge = 90;
+
   formGroup = this.fb.group(
     {
       age: [0, Validators.required],
       driversLicence: [false],
     },
-    { validators: [AgeDriversLicenceValidator()] },
+    { validators: [AgeDriversLicenceValidator(this.limitAge)] },
   );
 
   constructor(private fb: FormBuilder) {}

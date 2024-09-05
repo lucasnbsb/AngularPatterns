@@ -6,8 +6,8 @@
   </p>
   <p>Range forms are the most common use case for this.</p>
   <p>
-    Here we have age and drivers licence, people under 18 or over 70 shouldn't
-    drive
+    Here we have age and drivers licence, people under 18 or over
+    {{ limitAge }} shouldn't drive
   </p>
   <form [formGroup]="formGroup">
     <div class="flex gap-4">
@@ -48,4 +48,20 @@
       </div>
     </div>
   </form>
+  <p>
+    See
+    <a
+      href="https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/form-group-validations/form-group-validations.component.ts"
+      target="_blank"
+      rel="noreferrer"
+      >the component</a
+    >
+    and
+    <a
+      href="https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/shared/validators/age-drivers-licence-validator.directive.ts"
+      target="_blank"
+      rel="noreferrer"
+      >the validator</a
+    >
+  </p>
 </app-card-layout>

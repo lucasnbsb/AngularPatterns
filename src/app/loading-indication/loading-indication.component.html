@@ -7,10 +7,7 @@
     observable can be wrapped in the utility methods and the loaders with be
     signaled through the subjects automatically
   </p>
-  <p>
-    See the files <b>loading.services.ts</b> and
-    <b>loading-indication.components.ts</b>
-  </p>
+
   <div class="flex flex-col gap-2 pb-4">
     <button class="btn btn-primary" (click)="sendGlobalLoader()">
       Global Loader
@@ -45,4 +42,21 @@
       Disabled while loading local
     </button>
   </div>
+
+  <p>
+    See
+    <a
+      href="https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/shared/services/loading.service.ts"
+      target="_blank"
+      rel="noreferrer"
+      >the service</a
+    >
+    and
+    <a
+      href="https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/loading-indication/loading-indication.component.ts"
+      target="_blank"
+      rel="noreferrer"
+      >the component</a
+    >
+  </p>
 </div>
