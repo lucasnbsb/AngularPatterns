@@ -33,27 +33,6 @@
           »
         </button>
       </div>
-
-      <p>
-        <app-external-link
-          text="see the pipe"
-          href="https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/shared/pipes/paginate-array.pipe.ts"
-        ></app-external-link>
-      </p>
-    }
-
-    @case ('PossessiveForm') {
-      <p>
-        This <b>{{ 'pipe' | possessiveForm }}</b> utility is very narrow, might
-        be faster to write it than get it here
-      </p>
-
-      <p>
-        <app-external-link
-          text="see the pipe"
-          href="https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/shared/pipes/possessive-form.pipe.ts"
-        ></app-external-link>
-      </p>
     }
 
     @case ('QuickSearch') {
@@ -135,17 +114,6 @@
       </p>
     }
 
-    @case ('arrayAsText') {
-      <p>This is a silly little pipe and i've shipped this to production</p>
-
-      <p><b>Turns:</b> ['Mangoes', 'Pears', 'Apples', 'Bannanas']</p>
-
-      <p>
-        <b>Into:</b>
-        {{ ['Mangoes', 'Pears', 'Apples', 'Bannanas'] | arrayAsText }}
-      </p>
-    }
-
     @case ('timeAgo') {
       <p>Use case: usually to show the age of a notification</p>
       <p>You have a date and wants to print how long ago it was</p>
@@ -163,5 +131,12 @@
         }
       </div>
     }
+  }
+
+  @if (showView()) {
+    {{ showView() }}
+    <app-external-code-panel
+      [references]="[references[showView()!]]"
+    ></app-external-code-panel>
   }
 </app-card-layout>

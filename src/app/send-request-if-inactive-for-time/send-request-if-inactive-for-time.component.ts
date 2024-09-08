@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ExternalCodePanelComponent } from './../shared/external-code-panel/external-code-panel.component';
 
 import {
   BehaviorSubject,
@@ -15,11 +16,12 @@ import {
   timeout,
 } from 'rxjs';
 import { CardLayoutComponent } from '../shared/components/card-layout/card-layout.component';
+import { ExternalCodeReference } from '../shared/external-code-panel/external-code-panel.component';
 
 @Component({
   selector: 'app-send-request-if-inactive-for-time',
   standalone: true,
-  imports: [CommonModule, CardLayoutComponent],
+  imports: [CommonModule, CardLayoutComponent, ExternalCodePanelComponent],
   templateUrl: './send-request-if-inactive-for-time.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -29,6 +31,13 @@ export class SendRequestIfInactiveForTimeComponent {
   counterSubject$: Observable<number>;
   interval = 5000;
   counter = new BehaviorSubject(0);
+
+  references: ExternalCodeReference[] = [
+    {
+      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/send-request-if-inactive-for-time/send-request-if-inactive-for-time.component.ts',
+      title: 'this component',
+    },
+  ];
 
   constructor() {
     this.sourceSubject$
