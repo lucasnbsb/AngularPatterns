@@ -122,11 +122,37 @@
       <span>{{ lastMonth | date }} ➡️ {{ lastMonth | timeAgo }}</span>
     }
 
+    @case ('objectMatch') {
+      <span>
+        Use case: you have a value that has to be interpolated according to
+        another value, if a switch case would be a solution, then this is a
+        solution. Eg:
+        <ul>
+          <li>translating an id to it's meaning</li>
+          <li>translating a string to it's illustrating icon</li>
+        </ul>
+      </span>
+      @for (arrow of toMatch; track $index) {
+        <div class="flex items-center gap-2">
+          {{ arrow }} =
+          <lucide-angular
+            [name]="arrow | enumMatch: matchExample"
+          ></lucide-angular>
+        </div>
+
+        <!-- <lucide-angular [name]="matchExample[arrow]"></lucide-angular> -->
+      }
+    }
+
     @default {
+      <p>
+        If you search for '|' in your templates and don't find hundreds, your
+        app will be slow one day
+      </p>
       <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         @for (key of keys; track $index) {
           <button class="btn btn-outline btn-lg" (click)="show(key)">
-            {{ labels[key] }}
+            {{ labels[key] | titlecase }}
           </button>
         }
       </div>
@@ -134,7 +160,6 @@
   }
 
   @if (showView()) {
-    {{ showView() }}
     <app-external-code-panel
       [references]="[references[showView()!]]"
     ></app-external-code-panel>

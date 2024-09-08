@@ -18,13 +18,16 @@ import { PossessiveFormPipe } from '../shared/pipes/possessive-form.pipe';
 import { QuickSearchPipe } from '../shared/pipes/quick-search.pipe';
 import { TimeAgoPipe } from '../shared/pipes/time-ago.pipe';
 import { TimeframeInMinutesPipe } from '../shared/pipes/timeframe-in-minutes.pipe';
+import { EnumMatchPipe, MatchExample } from '../shared/pipes/enum-match.pipe';
+import { LucideAngularModule } from 'lucide-angular';
 
 export type usefullPipes =
   | 'paginateArray'
   | 'QuickSearch'
   | 'timeframeInMinutes'
   | 'offsetDateByBusinessDays'
-  | 'timeAgo';
+  | 'timeAgo'
+  | 'objectMatch';
 
 @Component({
   selector: 'app-usefull-pipes',
@@ -40,7 +43,9 @@ export type usefullPipes =
     OffsetByBusinessDaysPipe,
     ArrayAsTextPipe,
     TimeAgoPipe,
+    EnumMatchPipe,
     ExternalCodePanelComponent,
+    LucideAngularModule,
   ],
   templateUrl: './usefull-pipes.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,8 +55,9 @@ export class UsefullPipesComponent {
     paginateArray: 'Paginate Array',
     QuickSearch: 'Quick Search',
     timeframeInMinutes: 'Timeframe in Minutes',
-    offsetDateByBusinessDays: 'Offset date by business days',
+    offsetDateByBusinessDays: 'Offset Date by Business Days',
     timeAgo: 'Time ago',
+    objectMatch: 'Object Match',
   };
 
   seeThePipeButtonLabel = 'the pipe';
@@ -76,6 +82,10 @@ export class UsefullPipesComponent {
       title: this.seeThePipeButtonLabel,
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/time-ago.pipe.ts',
     },
+    objectMatch: {
+      title: this.seeThePipeButtonLabel,
+      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/enum-match.pipe.ts',
+    },
   };
 
   keys = Object.keys(this.labels) as usefullPipes[];
@@ -91,6 +101,9 @@ export class UsefullPipesComponent {
   today = new Date();
   lastWeek = new Date();
   lastMonth = new Date();
+
+  matchExample = MatchExample;
+  toMatch = ['left', 'right', 'up', 'down'];
 
   show(view?: usefullPipes): void {
     this.showView.set(view);

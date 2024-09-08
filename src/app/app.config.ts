@@ -10,6 +10,10 @@ import {
   Package,
   Sun,
   X,
+  CircleChevronDown,
+  CircleChevronLeft,
+  CircleChevronRight,
+  CircleChevronUp,
 } from 'lucide-angular';
 import { provideHighlightOptions } from 'ngx-highlightjs';
 import { routes } from './app.routes';
@@ -27,6 +31,10 @@ export const appConfig: ApplicationConfig = {
         Package,
         ArrowBigLeft,
         X,
+        CircleChevronDown,
+        CircleChevronLeft,
+        CircleChevronRight,
+        CircleChevronUp,
       }),
     ),
     provideHighlightOptions({
