@@ -1,0 +1,31 @@
+<p class="flex items-center gap-1">
+  @for (
+    reference of references();
+    track $index;
+    let last = $last;
+    let first = $first
+  ) {
+    @if (first) {
+      See:
+    }
+    @if (last) {
+      and
+    }
+    @if (!first && !last) {
+      ,
+    }
+    <button
+      class="btn btn-sm mx-1"
+      type="button"
+      (click)="$event.preventDefault(); openLink(reference.url)"
+    >
+      {{ reference.title }}
+    </button>
+  }
+</p>
+@if (linkToOpen().length) {
+  <app-external-highlighted-code
+    (closeClicked)="linkToOpen.set('')"
+    [link]="linkToOpen()"
+  ></app-external-highlighted-code>
+}

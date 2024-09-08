@@ -41,40 +41,8 @@
       </button>
     </div>
 
-    <p class="flex items-center gap-1">
-      See:
-      <button
-        class="btn btn-sm"
-        type="button"
-        (click)="
-          $event.preventDefault();
-          openLink(
-            'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/services/loading.service.ts'
-          )
-        "
-        target="_self"
-      >
-        the service
-      </button>
-      and
-      <button
-        class="btn btn-sm"
-        (click)="
-          openLink(
-            'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/loading-indication/loading-indication.component.ts'
-          )
-        "
-        target="_self"
-      >
-        the component
-      </button>
-    </p>
-
-    @if (linkToOpen().length) {
-      <app-external-highlighted-code
-        (closeClicked)="linkToOpen.set('')"
-        [link]="linkToOpen()"
-      ></app-external-highlighted-code>
-    }
+    <app-external-code-panel
+      [references]="references"
+    ></app-external-code-panel>
   </div>
 </app-card-layout>

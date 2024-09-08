@@ -3,8 +3,11 @@ import { Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { delay, of } from 'rxjs';
 import { CardLayoutComponent } from '../shared/components/card-layout/card-layout.component';
-import { ExternalHighlightedCodeComponent } from '../shared/components/external-highlighted-code/external-highlighted-code.component';
 import { LoadingService } from '../shared/services/loading.service';
+import {
+  ExternalCodePanelComponent,
+  ExternalCodeReference,
+} from './../shared/external-code-panel/external-code-panel.component';
 
 @Component({
   selector: 'app-loading-indication',
@@ -13,7 +16,7 @@ import { LoadingService } from '../shared/services/loading.service';
     CommonModule,
     RouterModule,
     CardLayoutComponent,
-    ExternalHighlightedCodeComponent,
+    ExternalCodePanelComponent,
   ],
   templateUrl: './loading-indication.component.html',
 })
@@ -28,6 +31,17 @@ export class LoadingIndicationComponent {
   loadingDelay = 1;
 
   linkToOpen = signal('');
+
+  references: ExternalCodeReference[] = [
+    {
+      title: 'the service',
+      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/services/loading.service.ts',
+    },
+    {
+      title: 'the component',
+      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/loading-indication/loading-indication.component.ts',
+    },
+  ];
 
   sendRequest() {
     return of('Done!').pipe(delay(this.loadingDelay * 1000));
