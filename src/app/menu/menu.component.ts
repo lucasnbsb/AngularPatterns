@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { routes } from '../app.routes';
-import { CardLayoutComponent } from '../card-layout/card-layout.component';
+import { CardLayoutComponent } from '../shared/components/card-layout/card-layout.component';
+import { ExternalHighlightedCodeComponent } from './../shared/components/external-highlighted-code/external-highlighted-code.component';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [RouterModule, CardLayoutComponent],
+  imports: [
+    RouterModule,
+    CardLayoutComponent,
+    ExternalHighlightedCodeComponent,
+  ],
   templateUrl: './menu.component.html',
 })
 export class MenuComponent {

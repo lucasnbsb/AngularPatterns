@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CardLayoutComponent } from '../card-layout/card-layout.component';
 import { CustomButtonDirective } from '../custom-button.directive';
+import { CardLayoutComponent } from '../shared/components/card-layout/card-layout.component';
 
 @Component({
   selector: 'app-directives-for-html-elements',

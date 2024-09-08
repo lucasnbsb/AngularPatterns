@@ -1,62 +1,80 @@
-<div class="prose card flex flex-col p-8 shadow-lg">
-  <h1>
-    <a class="no-underline" [routerLink]="'../'">⏪</a> Loading indicators
-  </h1>
-  <p>
-    Clicking a button will trigger a {{ loadingDelay }} second delay. Any
-    observable can be wrapped in the utility methods and the loaders with be
-    signaled through the subjects automatically
-  </p>
+<app-card-layout title="Loading indicators">
+  <div class="prose flex flex-col">
+    <p>
+      Clicking a button will trigger a {{ loadingDelay }} second delay. Any
+      observable can be wrapped in the utility methods and the loaders with be
+      signaled through the subjects automatically
+    </p>
 
-  <div class="flex flex-col gap-2 pb-4">
-    <button class="btn btn-primary" (click)="sendGlobalLoader()">
-      Global Loader
-      <!-- any parameter in the system can be bound to a loader -->
-      @if (globalLoading$ | async) {
-        <span class="loading loading-ring loading-lg"></span>
-      }
-    </button>
-    <button class="btn btn-primary" (click)="sendLocalLoader('local1')">
-      Local loader 1
-      @if (localLoading$ | async) {
-        <span class="loading loading-ring loading-lg"></span>
-      }
-    </button>
-    <button
-      class="btn btn-primary"
-      (click)="sendLocalLoader(['global', 'local1'])"
-    >
-      Local and global loader
-      @if ((localLoading$ | async) || (globalLoading$ | async)) {
-        <span class="loading loading-ring loading-lg"></span>
-      }
-    </button>
+    <div class="flex flex-col gap-2 pb-4">
+      <button class="btn btn-primary" (click)="sendGlobalLoader()">
+        Global Loader
+        <!-- any parameter in the system can be bound to a loader -->
+        @if (globalLoading$ | async) {
+          <span class="loading loading-ring loading-lg"></span>
+        }
+      </button>
+      <button class="btn btn-primary" (click)="sendLocalLoader('local1')">
+        Local loader 1
+        @if (localLoading$ | async) {
+          <span class="loading loading-ring loading-lg"></span>
+        }
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="sendLocalLoader(['global', 'local1'])"
+      >
+        Local and global loader
+        @if ((localLoading$ | async) || (globalLoading$ | async)) {
+          <span class="loading loading-ring loading-lg"></span>
+        }
+      </button>
+    </div>
+
+    <div class="flex flex-col justify-around gap-2 md:flex-row">
+      <!-- element attributes are a good target for binding with the loaders. -->
+      <button class="btn" [class.btn-disabled]="globalLoading$ | async">
+        Disabled while loading global
+      </button>
+      <button class="btn" [class.btn-disabled]="localLoading$ | async">
+        Disabled while loading local
+      </button>
+    </div>
+
+    <p class="flex items-center gap-1">
+      See:
+      <button
+        class="btn btn-sm"
+        type="button"
+        (click)="
+          $event.preventDefault();
+          openLink(
+            'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/services/loading.service.ts'
+          )
+        "
+        target="_self"
+      >
+        the service
+      </button>
+      and
+      <button
+        class="btn btn-sm"
+        (click)="
+          openLink(
+            'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/loading-indication/loading-indication.component.ts'
+          )
+        "
+        target="_self"
+      >
+        the component
+      </button>
+    </p>
+
+    @if (linkToOpen().length) {
+      <app-external-highlighted-code
+        (closeClicked)="linkToOpen.set('')"
+        [link]="linkToOpen()"
+      ></app-external-highlighted-code>
+    }
   </div>
-
-  <div class="flex flex-col justify-around gap-2 md:flex-row">
-    <!-- element attributes are a good target for binding with the loaders. -->
-    <button class="btn" [class.btn-disabled]="globalLoading$ | async">
-      Disabled while loading global
-    </button>
-    <button class="btn" [class.btn-disabled]="localLoading$ | async">
-      Disabled while loading local
-    </button>
-  </div>
-
-  <p>
-    See
-    <a
-      href="https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/shared/services/loading.service.ts"
-      target="_blank"
-      rel="noreferrer"
-      >the service</a
-    >
-    and
-    <a
-      href="https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/loading-indication/loading-indication.component.ts"
-      target="_blank"
-      rel="noreferrer"
-      >the component</a
-    >
-  </p>
-</div>
+</app-card-layout>

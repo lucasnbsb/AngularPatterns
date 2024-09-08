@@ -8,7 +8,8 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CardLayoutComponent } from '../card-layout/card-layout.component';
+import { CardLayoutComponent } from '../shared/components/card-layout/card-layout.component';
+import { ExternalLinkComponent } from '../shared/components/external-link/external-link.component';
 import { NatoAlphabet } from '../shared/constants/nato-alphabet';
 import { ArrayAsTextPipe } from '../shared/pipes/array-as-text.pipe';
 import { PaginateArrayPipe } from '../shared/pipes/paginate-array.pipe';
@@ -40,6 +41,7 @@ export type usefullPipes =
     OffsetByBusinessDaysPipe,
     ArrayAsTextPipe,
     TimeAgoPipe,
+    ExternalLinkComponent,
   ],
   templateUrl: './usefull-pipes.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

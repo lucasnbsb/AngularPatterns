@@ -1,5 +1,6 @@
-<div
-  class="flex items-center justify-center bg-base-100 sm:h-screen sm:w-screen"
->
-  <router-outlet />
+<div class="flex h-[100vh] w-full flex-col gap-2 bg-base-100">
+  <app-header></app-header>
+  <div class="flex grow justify-center">
+    <router-outlet />
+  </div>
 </div>

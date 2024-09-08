@@ -14,7 +14,7 @@ import {
   takeUntil,
   timeout,
 } from 'rxjs';
-import { CardLayoutComponent } from '../card-layout/card-layout.component';
+import { CardLayoutComponent } from '../shared/components/card-layout/card-layout.component';
 
 @Component({
   selector: 'app-send-request-if-inactive-for-time',

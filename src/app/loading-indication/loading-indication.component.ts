@@ -1,13 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { delay, of } from 'rxjs';
+import { CardLayoutComponent } from '../shared/components/card-layout/card-layout.component';
+import { ExternalHighlightedCodeComponent } from '../shared/components/external-highlighted-code/external-highlighted-code.component';
 import { LoadingService } from '../shared/services/loading.service';
 
 @Component({
   selector: 'app-loading-indication',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    CardLayoutComponent,
+    ExternalHighlightedCodeComponent,
+  ],
   templateUrl: './loading-indication.component.html',
 })
 export class LoadingIndicationComponent {
@@ -19,6 +26,8 @@ export class LoadingIndicationComponent {
   localLoading2$ = this.loading.getLoading('local2');
 
   loadingDelay = 1;
+
+  linkToOpen = signal('');
 
   sendRequest() {
     return of('Done!').pipe(delay(this.loadingDelay * 1000));
@@ -37,5 +46,9 @@ export class LoadingIndicationComponent {
     this.loading.withLocalLoading(key, this.sendRequest()).subscribe(() => {
       console.log(`Local loading ${key} complete`);
     });
+  }
+
+  openLink(link: string) {
+    this.linkToOpen.set(link);
   }
 }

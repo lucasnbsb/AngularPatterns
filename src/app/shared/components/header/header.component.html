@@ -1,0 +1,46 @@
+<div class="navbar flex justify-between bg-base-300">
+  <button class="btn btn-ghost text-lg" [routerLink]="'/'">
+    <img
+      ngSrc="../assets/images/frog-vector.svg"
+      alt="Icon description"
+      width="40"
+      height="40"
+    />
+    <span>Angular Patterns</span>
+  </button>
+
+  <div class="dropdown dropdown-end dropdown-bottom">
+    <div tabindex="0" role="button" class="btn btn-ghost" aria-label="menu">
+      <lucide-icon name="ellipsis-vertical"></lucide-icon>
+    </div>
+    <ul
+      tabindex="0"
+      class="menu dropdown-content z-[1] w-52 rounded-box bg-base-300 p-2 shadow"
+    >
+      <li>
+        <a
+          class="btn"
+          href="https://www.linkedin.com/in/lucas-neto-moreira/"
+          target="_blank"
+          role="menuitem"
+          id="linkedinButton"
+          aria-label="Maintainer's Linkedin page"
+        >
+          <lucide-icon name="linkedin"></lucide-icon>
+        </a>
+      </li>
+      <li>
+        <a
+          class="btn"
+          href="https://github.com/lucasnbsb/AngularPatterns"
+          target="_blank"
+          role="menuitem"
+          id="githubButton"
+          aria-label="Project's github page"
+        >
+          <lucide-icon name="github"></lucide-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

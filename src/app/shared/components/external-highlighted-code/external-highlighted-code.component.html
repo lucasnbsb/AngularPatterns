@@ -1,0 +1,12 @@
+@if (text().length) {
+  <span
+    class="flex w-full items-center justify-between gap-1 text-xl font-bold"
+  >
+    <i>{{ filename() }}</i>
+    <button class="btn btn-ghost" (click)="closeClicked.emit()">
+      <lucide-icon name="x"></lucide-icon>
+    </button>
+  </span>
+
+  <pre><code [highlight]="text()" language="typescript"></code></pre>
+}

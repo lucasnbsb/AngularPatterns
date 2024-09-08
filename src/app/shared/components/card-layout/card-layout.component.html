@@ -1,0 +1,22 @@
+<div class="prose card flex flex-col p-8 shadow-2xl">
+  <h1 class="flex flex-row items-center justify-center">
+    @if (!hideBackButton()) {
+      @if (backButtonToHome()) {
+        <button
+          class="btn btn-link"
+          (click)="backClicked.emit()"
+          [routerLink]="backButtonToHome() ? '../' : ''"
+        >
+          <lucide-icon [size]="40" name="arrow-big-left"></lucide-icon>
+        </button>
+      } @else {
+        <button class="btn btn-link" (click)="backClicked.emit()">
+          <lucide-icon [size]="40" name="arrow-big-left"></lucide-icon>
+        </button>
+      }
+    }
+    {{ title() }}
+  </h1>
+
+  <ng-content></ng-content>
+</div>

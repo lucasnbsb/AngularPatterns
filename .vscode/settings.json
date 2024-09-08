@@ -16,5 +16,12 @@
     "extensions": [".ts", ".html"]
   },
 
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html"]
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
