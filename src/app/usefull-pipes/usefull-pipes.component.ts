@@ -9,18 +9,18 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { LucideAngularModule } from 'lucide-angular';
 import { CardLayoutComponent } from '../shared/components/card-layout/card-layout.component';
+import { LookupTableComponent } from '../shared/components/lookup-table/lookup-table.component';
 import { NatoAlphabet } from '../shared/constants/nato-alphabet';
 import { ExternalCodePanelComponent } from '../shared/external-code-panel/external-code-panel.component';
 import { ArrayAsTextPipe } from '../shared/pipes/array-as-text.pipe';
+import { LookupTablePipe } from '../shared/pipes/lookup-table.pipe';
 import { PaginateArrayPipe } from '../shared/pipes/paginate-array.pipe';
 import { PossessiveFormPipe } from '../shared/pipes/possessive-form.pipe';
 import { QuickSearchPipe } from '../shared/pipes/quick-search.pipe';
 import { TimeAgoPipe } from '../shared/pipes/time-ago.pipe';
 import { TimeframeInMinutesPipe } from '../shared/pipes/timeframe-in-minutes.pipe';
-import { LookupTablePipe, MatchExample, MatchExampleEnum } from '../shared/pipes/lookup-table.pipe';
-import { LucideAngularModule } from 'lucide-angular';
-import { LookupTableComponent } from '../shared/components/lookup-table/lookup-table.component';
 
 export type usefullPipes =
   | 'paginateArray'
@@ -47,7 +47,7 @@ export type usefullPipes =
     LookupTablePipe,
     ExternalCodePanelComponent,
     LucideAngularModule,
-  LookupTableComponent
+    LookupTableComponent,
   ],
   templateUrl: './usefull-pipes.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -63,31 +63,48 @@ export class UsefullPipesComponent {
   };
 
   seeThePipeButtonLabel = 'the pipe';
-  references: Record<usefullPipes, ExternalCodeReference> = {
-    paginateArray: {
-      title: this.seeThePipeButtonLabel,
-      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/paginate-array.pipe.ts',
-    },
-    QuickSearch: {
-      title: this.seeThePipeButtonLabel,
-      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/quick-search.pipe.ts',
-    },
-    timeframeInMinutes: {
-      title: this.seeThePipeButtonLabel,
-      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/timeframe-in-minutes.pipe.ts',
-    },
-    offsetDateByBusinessDays: {
-      title: this.seeThePipeButtonLabel,
-      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/offset-by-business-days.pipe.ts',
-    },
-    timeAgo: {
-      title: this.seeThePipeButtonLabel,
-      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/time-ago.pipe.ts',
-    },
-    lookupTable: {
-      title: this.seeThePipeButtonLabel,
-      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/lookup-table.pipe.ts'
-    },
+  references: Record<usefullPipes, ExternalCodeReference[]> = {
+    paginateArray: [
+      {
+        title: this.seeThePipeButtonLabel,
+        url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/paginate-array.pipe.ts',
+      },
+    ],
+    QuickSearch: [
+      {
+        title: this.seeThePipeButtonLabel,
+        url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/quick-search.pipe.ts',
+      },
+    ],
+    timeframeInMinutes: [
+      {
+        title: this.seeThePipeButtonLabel,
+        url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/timeframe-in-minutes.pipe.ts',
+      },
+    ],
+    offsetDateByBusinessDays: [
+      {
+        title: this.seeThePipeButtonLabel,
+        url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/offset-by-business-days.pipe.ts',
+      },
+    ],
+    timeAgo: [
+      {
+        title: this.seeThePipeButtonLabel,
+        url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/time-ago.pipe.ts',
+      },
+    ],
+    lookupTable: [
+      {
+        title: this.seeThePipeButtonLabel,
+        url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/lookup-table.pipe.ts',
+      },
+      {
+        title: 'the template',
+        url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/components/lookup-table/lookup-table.component.html',
+        language: 'html',
+      },
+    ],
   };
 
   keys = Object.keys(this.labels) as usefullPipes[];

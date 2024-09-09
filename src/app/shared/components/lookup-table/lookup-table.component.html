@@ -1,59 +1,75 @@
 <span>
-  Use case: you have a value that has to be interpolated according to another
-  value, if a switch case would be a solution, then this is a solution. Eg:
+  Use case: basic lookup operation, match a value by a key. You have 4
+  reasonable ways to do this
   <ul>
-    <li>translating an id to it's meaning</li>
-    <li>translating a string to it's illustrating icon</li>
+    <li>
+      <b>Pojo:</b> needs an index accessed type to perform the lookup<br />
+      <blockquote>
+        <code>{{ '{' }}[key: string]: string{{ '}' }}</code>
+      </blockquote>
+    </li>
+    <li>
+      <b>Record:</b> works with a generic string key or a proper type, the
+      string type loses the main benefit of the record, exaustive checking.
+    </li>
+    <li>
+      <b>Enum:</b> does not work with a generic string value. So you are forced
+      to add a type to the lookup key
+    </li>
+    <li>
+      <b>Map:</b> you need to call the get method. Witch would happen every
+      change detection cycle. So map is <b>out</b>
+    </li>
   </ul>
-  But depending on how the lookup variable is set up ( enums, records, objects,
-  maps ). The template syntax might give you grief
+  3 out of 4 work fine. But this is production and you can't just go into an
+  interface and add a type to a string prop
+  <blockquote>
+    Because now you are refactoring instead of adding business value
+  </blockquote>
+
+  <p>
+    So you need a pipe to help index into your lookup table with a generic
+    string key.
+  </p>
+
+  In the following example you are matching arrow directions to their icons:<br />
 </span>
 <br />
-
 <div class="flex flex-row justify-around">
   <div class="flex flex-col">
-    <b>With a plain object:</b>
-    @for (arrow of toMatch; track $index) {
-      <div class="flex items-center gap-2">
-        {{ arrow }} =
-        <lucide-angular
-          [name]="arrow | enumMatch: matchExample"
-        ></lucide-angular>
-      </div>
+    <b>Pojo</b>
+    <!-- Works when you add the indexed access key, which is also generaly safe to add to an existing pojo -->
+    @for (arrow of lookupTableString; track $index) {
+      <lucide-angular [name]="lookupPojo[arrow]"></lucide-angular>
     }
   </div>
+
+  <!-- Works out of the box with a generic string, so you don't need the pipe -->
   <div class="flex flex-col">
-    <b>With an enum:</b>
-    @for (arrow of toMatch; track $index) {
-      <div class="flex items-center gap-2">
-        {{ arrow }} =
-        <lucide-angular
-          [name]="arrow | enumMatch: matchExampleEnum"
-        ></lucide-angular>
-      </div>
+    <b>Record:</b>
+    @for (arrow of lookupTableString; track $index) {
+      <lucide-angular [name]="lookupRecord[arrow]"></lucide-angular>
     }
   </div>
 
-  <!-- <div class="flex flex-col">
-    <b>Without the pipe</b>
-    
-    @for (arrow of toMatch; track $index) {
-      @let newOne = arrow;
-      <lucide-angular [name]="matchExampleRecord[arrow]"></lucide-angular>
-    }
-  </div> -->
-
+  <!-- Would fails without the pipe with: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'typeof LookupEnum'. -->
   <div class="flex flex-col">
-    <b>Without the pipe</b>
-    @for (arrow of toMatch; track $index) {
-      <lucide-angular [name]="matchExample[arrow]"></lucide-angular>
+    <b>Enum:</b>
+    @for (arrow of lookupTableString; track $index) {
+      <lucide-angular [name]="arrow | lookupIn: lookupEnum"></lucide-angular>
     }
   </div>
 
-  <!-- <div class="flex flex-col">
-    <b>Without the pipe</b>
-    @for (arrow of toMatch; track $index) {
-      <lucide-angular [name]="matchExampleEnum[arrow]"></lucide-angular>
+  <!-- The pipe actually performs better than the map interface because it does not call the getter every change detection cycle -->
+  <div class="flex flex-col">
+    <b>Map:</b>
+    @for (arrow of lookupTableString; track $index) {
+      <lucide-angular [name]="arrow | lookupIn: lookupEnum"></lucide-angular>
     }
-  </div> -->
+  </div>
 </div>
+
+<blockquote>
+  TL;DR: Either use a record or a pojo with an indexed access key, then you
+  don't need a pipe
+</blockquote>

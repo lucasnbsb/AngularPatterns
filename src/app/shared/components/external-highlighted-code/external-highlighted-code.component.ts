@@ -21,7 +21,7 @@ import { Highlight } from 'ngx-highlightjs';
 })
 export class ExternalHighlightedCodeComponent {
   link = input.required<string>();
-  lang = input<string>();
+  language = input<string>();
   filename = computed(() => this.link().split('/').pop());
   text = signal('');
   closeClicked = output<void>();

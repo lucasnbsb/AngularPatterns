@@ -17,7 +17,9 @@
     <button
       class="btn btn-sm mx-1"
       type="button"
-      (click)="$event.preventDefault(); openLink(reference.url)"
+      (click)="
+        $event.preventDefault(); openLink(reference.url, reference.language)
+      "
     >
       {{ reference.title }}
     </button>
@@ -27,5 +29,6 @@
   <app-external-highlighted-code
     (closeClicked)="linkToOpen.set('')"
     [link]="linkToOpen()"
+    [language]="language()"
   ></app-external-highlighted-code>
 }

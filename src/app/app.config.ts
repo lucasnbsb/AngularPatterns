@@ -43,6 +43,7 @@ export const appConfig: ApplicationConfig = {
       lineNumbersLoader: () => import('ngx-highlightjs/line-numbers'), // Optional, add line numbers if needed
       languages: {
         typescript: () => import('highlight.js/lib/languages/typescript'),
+        html: () => import('highlight.js/lib/languages/xml'),
       },
     }),
     provideHttpClient(),

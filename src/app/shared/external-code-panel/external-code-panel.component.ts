@@ -10,6 +10,7 @@ import { ExternalHighlightedCodeComponent } from '../components/external-highlig
 export interface ExternalCodeReference {
   title: string;
   url: string;
+  language?: string;
 }
 
 @Component({
@@ -23,8 +24,10 @@ export class ExternalCodePanelComponent {
   references = input.required<ExternalCodeReference[]>();
 
   linkToOpen = signal('');
+  language = signal<string | undefined>(undefined);
 
-  openLink(link: string) {
+  openLink(link: string, language: string | undefined) {
     this.linkToOpen.set(link);
+    this.language.set(language);
   }
 }

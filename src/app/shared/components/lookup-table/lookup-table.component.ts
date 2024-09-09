@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import {
+  ArrowDirections,
+  LookupEnum,
+  LookupMap,
+  LookupPojo,
   LookupTablePipe,
-  MatchExample,
-  MatchExampleEnum,
 } from '../../pipes/lookup-table.pipe';
-import { MatchExampleRecord } from './../../pipes/lookup-table.pipe';
+import { LookupRecord } from './../../pipes/lookup-table.pipe';
 
 @Component({
   selector: 'app-lookup-table',
@@ -15,8 +17,10 @@ import { MatchExampleRecord } from './../../pipes/lookup-table.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LookupTableComponent {
-  matchExample = MatchExample;
-  matchExampleEnum = MatchExampleEnum;
-  matchExampleRecord = MatchExampleRecord;
-  toMatch = ['left', 'right', 'up', 'down'];
+  lookupPojo = LookupPojo;
+  lookupEnum = LookupEnum;
+  lookupRecord = LookupRecord;
+  lookupMap = LookupMap;
+  lookupTableTyped = ['left', 'right', 'up', 'down'] as ArrowDirections[];
+  lookupTableString = ['left', 'right', 'up', 'down'];
 }
