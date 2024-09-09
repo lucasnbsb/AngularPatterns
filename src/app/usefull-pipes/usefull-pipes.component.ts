@@ -28,7 +28,7 @@ export type usefullPipes =
   | 'timeframeInMinutes'
   | 'offsetDateByBusinessDays'
   | 'timeAgo'
-  | 'objectMatch';
+  | 'lookupTable';
 
 @Component({
   selector: 'app-usefull-pipes',
@@ -59,7 +59,7 @@ export class UsefullPipesComponent {
     timeframeInMinutes: 'Timeframe in Minutes',
     offsetDateByBusinessDays: 'Offset Date by Business Days',
     timeAgo: 'Time ago',
-    objectMatch: 'Object Match',
+    lookupTable: 'Lookup table',
   };
 
   seeThePipeButtonLabel = 'the pipe';
@@ -84,7 +84,7 @@ export class UsefullPipesComponent {
       title: this.seeThePipeButtonLabel,
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/time-ago.pipe.ts',
     },
-    objectMatch: {
+    lookupTable: {
       title: this.seeThePipeButtonLabel,
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/lookup-table.pipe.ts'
     },
@@ -104,16 +104,15 @@ export class UsefullPipesComponent {
   lastWeek = new Date();
   lastMonth = new Date();
 
-
-
-  show(view?: usefullPipes): void {
-    this.showView.set(view);
-  }
   constructor() {
     NatoAlphabet.forEach((letter) => {
       this.arrayForSearch.push({ name: letter });
     });
     this.lastWeek.setDate(this.today.getDate() - 7);
     this.lastMonth.setDate(this.today.getDate() - 30);
+  }
+
+  show(view?: usefullPipes): void {
+    this.showView.set(view);
   }
 }
