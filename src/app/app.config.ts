@@ -1,7 +1,12 @@
+import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import {
   ArrowBigLeft,
+  CircleChevronDown,
+  CircleChevronLeft,
+  CircleChevronRight,
+  CircleChevronUp,
   EllipsisVertical,
   Github,
   Linkedin,
@@ -10,10 +15,6 @@ import {
   Package,
   Sun,
   X,
-  CircleChevronDown,
-  CircleChevronLeft,
-  CircleChevronRight,
-  CircleChevronUp,
 } from 'lucide-angular';
 import { provideHighlightOptions } from 'ngx-highlightjs';
 import { routes } from './app.routes';
@@ -44,5 +45,6 @@ export const appConfig: ApplicationConfig = {
         typescript: () => import('highlight.js/lib/languages/typescript'),
       },
     }),
+    provideHttpClient(),
   ],
 };

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,7 +15,7 @@ import { Highlight } from 'ngx-highlightjs';
 @Component({
   selector: 'app-external-highlighted-code',
   standalone: true,
-  imports: [HttpClientModule, Highlight, CommonModule, LucideAngularModule],
+  imports: [Highlight, CommonModule, LucideAngularModule],
   templateUrl: './external-highlighted-code.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
