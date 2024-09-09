@@ -98,7 +98,7 @@
       </p>
       <p>Also don't be trying to go back in time</p>
       <p class="flex items-center gap-2">
-        <span>Today +</span>
+        <span>Today +</span> 
         <input
           type="number"
           min="0"
@@ -123,25 +123,7 @@
     }
 
     @case ('objectMatch') {
-      <span>
-        Use case: you have a value that has to be interpolated according to
-        another value, if a switch case would be a solution, then this is a
-        solution. Eg:
-        <ul>
-          <li>translating an id to it's meaning</li>
-          <li>translating a string to it's illustrating icon</li>
-        </ul>
-      </span>
-      @for (arrow of toMatch; track $index) {
-        <div class="flex items-center gap-2">
-          {{ arrow }} =
-          <lucide-angular
-            [name]="arrow | enumMatch: matchExample"
-          ></lucide-angular>
-        </div>
-
-        <!-- <lucide-angular [name]="matchExample[arrow]"></lucide-angular> -->
-      }
+      <app-lookup-table></app-lookup-table>
     }
 
     @default {

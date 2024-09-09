@@ -1,0 +1,36 @@
+<span>
+    Use case: you have a value that has to be interpolated according to
+    another value, if a switch case would be a solution, then this is a
+    solution. Eg:
+    <ul>
+      <li>translating an id to it's meaning</li>
+      <li>translating a string to it's illustrating icon</li>
+    </ul>
+    But depending on how the lookup variable is set up ( enums, records, objects, maps ). The template syntax might give you grief
+  </span>
+  <br/>
+
+  <div class="flex flex-row justify-around">
+      <div class="flex flex-col">
+        <b>With a plain object:</b>
+        @for (arrow of toMatch; track $index) {
+          <div class="flex items-center gap-2">
+            {{ arrow }} =
+            <lucide-angular
+              [name]="arrow | enumMatch: matchExample"
+            ></lucide-angular>
+          </div>
+        }
+      </div>
+      <div class="flex flex-col">
+        <b>With an enum:</b>
+        @for (arrow of toMatch; track $index) {
+          <div class="flex items-center gap-2">
+            {{ arrow }} =
+            <lucide-angular
+              [name]="arrow | enumMatch: matchExampleEnum"
+            ></lucide-angular>
+          </div>
+        }
+      </div>
+  </div>

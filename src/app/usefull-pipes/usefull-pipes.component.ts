@@ -18,8 +18,9 @@ import { PossessiveFormPipe } from '../shared/pipes/possessive-form.pipe';
 import { QuickSearchPipe } from '../shared/pipes/quick-search.pipe';
 import { TimeAgoPipe } from '../shared/pipes/time-ago.pipe';
 import { TimeframeInMinutesPipe } from '../shared/pipes/timeframe-in-minutes.pipe';
-import { EnumMatchPipe, MatchExample } from '../shared/pipes/enum-match.pipe';
+import { LookupTablePipe, MatchExample, MatchExampleEnum } from '../shared/pipes/lookup-table.pipe';
 import { LucideAngularModule } from 'lucide-angular';
+import { LookupTableComponent } from '../shared/components/lookup-table/lookup-table.component';
 
 export type usefullPipes =
   | 'paginateArray'
@@ -43,9 +44,10 @@ export type usefullPipes =
     OffsetByBusinessDaysPipe,
     ArrayAsTextPipe,
     TimeAgoPipe,
-    EnumMatchPipe,
+    LookupTablePipe,
     ExternalCodePanelComponent,
     LucideAngularModule,
+  LookupTableComponent
   ],
   templateUrl: './usefull-pipes.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -84,7 +86,7 @@ export class UsefullPipesComponent {
     },
     objectMatch: {
       title: this.seeThePipeButtonLabel,
-      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/enum-match.pipe.ts',
+      url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/lookup-table.pipe.ts'
     },
   };
 
@@ -102,8 +104,7 @@ export class UsefullPipesComponent {
   lastWeek = new Date();
   lastMonth = new Date();
 
-  matchExample = MatchExample;
-  toMatch = ['left', 'right', 'up', 'down'];
+
 
   show(view?: usefullPipes): void {
     this.showView.set(view);
