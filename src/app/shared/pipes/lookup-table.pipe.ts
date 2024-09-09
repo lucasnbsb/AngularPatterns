@@ -40,6 +40,7 @@ export class LookupTablePipe implements PipeTransform {
     key: T,
     defaultValue?: T[keyof T],
   ): T[keyof T] | undefined {
+    // One might want to use a default value for a missing key, or just return undefined
     return key[value as keyof T] ?? defaultValue;
   }
 }

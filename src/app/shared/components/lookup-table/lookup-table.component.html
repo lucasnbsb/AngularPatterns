@@ -52,7 +52,7 @@
     }
   </div>
 
-  <!-- Would fails without the pipe with: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'typeof LookupEnum'. -->
+  <!-- Would fail without the pipe with: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'typeof LookupEnum'. -->
   <div class="flex flex-col">
     <b>Enum:</b>
     @for (arrow of lookupTableString; track $index) {
