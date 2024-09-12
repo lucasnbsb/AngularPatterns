@@ -3,6 +3,7 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import {
   ArrowBigLeft,
+  Blocks,
   CircleChevronDown,
   CircleChevronLeft,
   CircleChevronRight,
@@ -36,6 +37,7 @@ export const appConfig: ApplicationConfig = {
         CircleChevronLeft,
         CircleChevronRight,
         CircleChevronUp,
+        Blocks,
       }),
     ),
     provideHighlightOptions({

@@ -1,3 +1,4 @@
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { routes } from '../app.routes';
@@ -8,12 +9,15 @@ import { ExternalHighlightedCodeComponent } from './../shared/components/externa
   selector: 'app-menu',
   standalone: true,
   imports: [
+    CommonModule,
     RouterModule,
     CardLayoutComponent,
+    NgOptimizedImage,
     ExternalHighlightedCodeComponent,
   ],
   templateUrl: './menu.component.html',
 })
 export class MenuComponent {
+  today = new Date();
   routes = routes.slice(0, -1);
 }

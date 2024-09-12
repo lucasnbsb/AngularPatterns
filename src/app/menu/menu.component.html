@@ -13,3 +13,30 @@
     }
   </div>
 </app-card-layout>
+
+<div class="chat chat-start invisible absolute bottom-4 left-4 md:visible">
+  <div class="avatar chat-image">
+    <div class="w-10 rounded-full">
+      <img
+        alt="Tailwind CSS chat bubble component"
+        ngSrc="assets/images/big_frog_blue_wide.png"
+        width="40"
+        height="40"
+      />
+    </div>
+  </div>
+  <div class="chat-header">
+    Lucas
+    <time class="text-xs opacity-50">{{ today | date: 'hh:mm' }}</time>
+  </div>
+  <div class="chat-bubble ring-primary hover:cursor-pointer hover:shadow-2xl">
+    <a
+      href="https://marketplace.visualstudio.com/items?itemName=lucasnbsb.angular-import"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Tired of jumping around to import components and modules? I've got an
+      extention for that!</a
+    >
+  </div>
+  <div class="chat-footer opacity-50">delivered</div>
+</div>
