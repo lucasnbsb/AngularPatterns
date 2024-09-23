@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     'prettier-plugin-tailwindcss',
     require('@tailwindcss/typography'),
+    require('@tailwindcss/container-queries'),
     require('daisyui'),
   ],
   daisyui: {

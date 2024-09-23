@@ -1,4 +1,9 @@
-<div class="prose card flex max-w-2xl flex-col p-8 shadow-2xl">
+<div
+  class="prose card flex max-w-2xl flex-col p-8 shadow-2xl"
+  [ngClass]="{
+    'h-full': fullHeight()
+  }"
+>
   <h1 class="flex flex-row items-center justify-center">
     @if (!hideBackButton()) {
       @if (backButtonToHome()) {

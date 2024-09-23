@@ -1,0 +1,96 @@
+<app-card-layout [fullHeight]="true" title="Container Queries">
+  <p class="">
+    Now in all stable modern browsers, container queries are the new best way to
+    archieve a responsive design
+  </p>
+  <p>
+    The following are a few examples of the most common applications of
+    container queries
+  </p>
+  <button class="button btn-link">
+    you should probably open this file on the side
+  </button>
+
+  <h3>1. Hide items when they don't fit</h3>
+  <p>
+    The following nav will hide a whole bunch of links when it's size crosses
+    320px, all in 3 tailwind classes.
+  </p>
+
+  <div class="grid gap-1">
+    <!-- Named container for the nav -->
+    <div
+      class="flex items-center justify-between rounded-lg border border-primary bg-primary p-4 @container/nav [&>a]:hidden [&>a]:@xs:block"
+      [style]="'width: ' + componentWidth() + 'px;'"
+    >
+      <span class="grid place-self-center text-lg font-bold">Title</span>
+      <a>Whole</a>
+      <a>bunch</a>
+      <a>of</a>
+      <a>links</a>
+      <lucide-angular size="20" name="search"></lucide-angular>
+    </div>
+    <label for="range-input-nav"></label>
+    <input
+      id="range-input-nav"
+      type="range"
+      [min]="minWidth()"
+      [max]="maxWidth()"
+      [value]="componentWidth()"
+      class="range range-primary"
+      [(ngModel)]="componentWidth"
+    />
+    Width: {{ componentWidth() }}px
+  </div>
+
+  <h3>2. Change the layout of items if they have space to expand into</h3>
+  <div
+    class="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2"
+    [style]="'width: ' + componentWidth() + 'px;'"
+  >
+    @for (
+      card of [].constructor(numberOfCards());
+      track $index;
+      let i = $index
+    ) {
+      <!-- Containers can't query themselves, so you will be mostly wrapping your components with the query container -->
+      <div class="@container/cards">
+        <!-- When cards exceed 180px they change to a row layout -->
+        <div
+          class="flex h-full flex-col items-center gap-1 rounded-lg border border-primary bg-base-300 p-2 shadow-lg @[170px]/cards:flex-row"
+        >
+          <div>
+            <lucide-angular [name]="exampleButtons[i].icon"></lucide-angular>
+          </div>
+          <div class="text-balance text-center">
+            {{ exampleButtons[i].label }}
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  Number of cards
+  <input
+    id="range-input-nav"
+    type="range"
+    [min]="1"
+    [max]="5"
+    [step]="1"
+    [value]="numberOfCards()"
+    class="range range-primary"
+    [(ngModel)]="numberOfCards"
+  />
+
+  Width: {{ componentWidth() }}px
+  <input
+    id="range-input-nav"
+    type="range"
+    [min]="minWidth()"
+    [max]="maxWidth()"
+    [value]="componentWidth()"
+    class="range range-primary"
+    [(ngModel)]="componentWidth"
+  />
+
+  <h3></h3>
+</app-card-layout>

@@ -1,0 +1,25 @@
+<app-card-layout
+  title="Keeping content above the fold"
+  class="h-full"
+  [fullHeight]="true"
+>
+  <div class="grid h-full w-[50vw] grid-rows-[auto_1fr_auto] self-center">
+    <div class="bg-primary text-primary-content">Header is set to auto</div>
+    <div class="overflow-auto bg-base-200">
+      <h3>To keep content above the fold a grid can be very usefull</h3>
+      <p>
+        The content is set to 1fr, taking up the rest of the available space
+      </p>
+      <p>
+        The content container should be scrollable, and as a bonus the footer
+        can use content projection to keep the main actions related to the
+        content always visible. Pretty usefull for highly interactive and long
+        workflows.
+      </p>
+    </div>
+    <div class="bg-secondary text-secondary-content">
+      Footer is also set to auto
+    </div>
+  </div>
+</app-card-layout>
+<!-- grid-cols-[repeat(auto-fit,minmax(150px,1fr))] -->
