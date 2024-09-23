@@ -1,15 +1,20 @@
 <app-card-layout [fullHeight]="true" title="Container Queries">
   <p class="">
     Now in all stable modern browsers, container queries are the new best way to
-    archieve a responsive design
+    archieve a responsive design simply because you can ship your components
+    with built in responsivenes that does not depends on the container's size,
+    rather than the viewport
   </p>
   <p>
     The following are a few examples of the most common applications of
     container queries
   </p>
-  <button class="button btn-link">
-    you should probably open this file on the side
-  </button>
+  <app-external-link
+    [href]="
+      'https://github.com/lucasnbsb/AngularPatterns/blob/main/src/app/layout-recipes/container-queries/container-queries.component.html'
+    "
+    text="This is the code for this whole page, you should probably open it to the side"
+  ></app-external-link>
 
   <h3>1. Hide items when they don't fit</h3>
   <p>
@@ -25,9 +30,9 @@
     >
       <span class="grid place-self-center text-lg font-bold">Title</span>
       <a>Whole</a>
-      <a>bunch</a>
-      <a>of</a>
-      <a>links</a>
+      <a>Bunch</a>
+      <a>Of</a>
+      <a>Links</a>
       <lucide-angular size="20" name="search"></lucide-angular>
     </div>
     <label for="range-input-nav"></label>
@@ -44,6 +49,14 @@
   </div>
 
   <h3>2. Change the layout of items if they have space to expand into</h3>
+  <p>
+    The following buttons will shift to an inline layout once their size exceeds
+    170 pixels
+  </p>
+  <p>
+    This works specially well if your components have an unbalanced amount of
+    text and wrapping happens at different points
+  </p>
   <div
     class="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2"
     [style]="'width: ' + componentWidth() + 'px;'"
@@ -62,8 +75,8 @@
           <div>
             <lucide-angular [name]="exampleButtons[i].icon"></lucide-angular>
           </div>
-          <div class="text-balance text-center">
-            {{ exampleButtons[i].label }}
+          <div class="text-balance">
+            {{ exampleButtons[i].label | titlecase }}
           </div>
         </div>
       </div>
@@ -92,5 +105,70 @@
     [(ngModel)]="componentWidth"
   />
 
-  <h3></h3>
+  <h3>3. Hide the labels and leave the icons</h3>
+  <p>
+    Works on very well stablished workflows, like social media interactions. In
+    the next example, the buttons at the bottom will change to icon-only right
+    before wrapping
+  </p>
+
+  <div
+    class="card bg-base-300 shadow-xl"
+    [style]="'width: ' + componentWidth() + 'px;'"
+  >
+    <figure>
+      <img src="https://placehold.co/300x200/000000/FFF" />
+    </figure>
+    <div class="card-body">
+      Place is the placeholder social media, everything is a placeholder and
+      there is no content!
+    </div>
+    <div class="card-actions flex justify-around @container/social">
+      @for (btn of socialButtons; track $index) {
+        <button class="btn btn-ghost">
+          <lucide-angular [name]="btn.icon"></lucide-angular>
+          <span class="hidden @[470px]/social:block">{{ btn.label }}</span>
+        </button>
+      }
+    </div>
+  </div>
+
+  Width: {{ componentWidth() }}px
+  <input
+    id="range-input-nav"
+    type="range"
+    [min]="minWidth()"
+    [max]="maxWidth()"
+    [value]="componentWidth()"
+    class="range range-primary"
+    [(ngModel)]="componentWidth"
+  />
+
+  <h3>4. Scale text to fill available space</h3>
+  <p>
+    Inside a container, the <code>cqw</code> unit represents 1% of the
+    container's width. By scaling text with a clamp function and a relative
+    unit, we can fill available space dynamically
+  </p>
+  <div
+    class="grid rounded-lg bg-primary p-2 text-primary-content @container/text"
+    [style]="'width: ' + componentWidth() + 'px;'"
+  >
+    <span class="text-[clamp(16px,_5cqw_,60px)] font-bold"
+      >Place: The only placeholder platform</span
+    >
+    <span
+      >Lorem ipsum this is the only place to post all your placeholders</span
+    >
+  </div>
+  Width: {{ componentWidth() }}px
+  <input
+    id="range-input-nav"
+    type="range"
+    [min]="minWidth()"
+    [max]="maxWidth()"
+    [value]="componentWidth()"
+    class="range range-primary"
+    [(ngModel)]="componentWidth"
+  />
 </app-card-layout>

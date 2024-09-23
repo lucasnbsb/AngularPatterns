@@ -3,6 +3,7 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import {
   ArrowBigLeft,
+  Bell,
   Blocks,
   CircleChevronDown,
   CircleChevronLeft,
@@ -13,12 +14,16 @@ import {
   CloudSun,
   CloudSunRain,
   EllipsisVertical,
+  Flag,
   Github,
+  Heart,
   Linkedin,
   LucideAngularModule,
+  MessageCircle,
   Moon,
   Package,
   Search,
+  Share2,
   Sun,
   X,
 } from 'lucide-angular';
@@ -48,6 +53,11 @@ export const appConfig: ApplicationConfig = {
         CloudSun,
         CloudLightning,
         CloudSunRain,
+        Heart,
+        Share2,
+        MessageCircle,
+        Bell,
+        Flag,
       }),
     ),
     provideHighlightOptions({
