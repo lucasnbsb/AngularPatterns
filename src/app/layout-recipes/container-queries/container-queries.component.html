@@ -1,9 +1,9 @@
 <app-card-layout [fullHeight]="true" title="Container Queries">
-  <p class="">
-    Now in all stable modern browsers, container queries are the new best way to
-    achieve a responsive design simply because you can ship your components with
-    built-in responsiveness that does not depend on the container's size, rather
-    than the viewport
+  <p>
+    Container queries are the best and newest way to solve the problem of
+    responsive components. By checking the container's size rather than the
+    viewport, components can be written with portable styles that can be dropped
+    anywhere on a page and still look good on all viewports.
   </p>
   <p>
     The following are a few examples of the most common applications of
@@ -29,6 +29,9 @@
       [style]="'width: ' + componentWidth() + 'px;'"
     >
       <span class="grid place-self-center text-lg font-bold">Title</span>
+      <!-- All of the css is in the container, 
+        so future changes to the content should be safer 
+        if they follow the stablished conventions -->
       <a>Whole</a>
       <a>Bunch</a>
       <a>Of</a>
@@ -57,6 +60,8 @@
     This works especially well if your components have an unbalanced amount of
     text and wrapping happen at different points
   </p>
+  <!-- This is a neat one liner that does a lot of heavy lifting, 
+  the container queries just take it the extra mile -->
   <div
     class="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2"
     [style]="'width: ' + componentWidth() + 'px;'"
@@ -123,10 +128,14 @@
       Place is the placeholder social media, everything is a placeholder and
       there is no content!
     </div>
+    <!-- It's a good practice to name all your containers -->
     <div class="card-actions flex justify-around @container/social">
       @for (btn of socialButtons; track $index) {
         <button class="btn btn-ghost">
           <lucide-angular [name]="btn.icon"></lucide-angular>
+          <!-- when using container queries through tailwind, 
+           make sure that the classes work on the same css property.
+           This is a rare case where i think the Tailwind abstractions are a detriment -->
           <span class="hidden @[470px]/social:block">{{ btn.label }}</span>
         </button>
       }
@@ -154,6 +163,7 @@
     class="grid rounded-lg bg-primary p-2 text-primary-content @container/text"
     [style]="'width: ' + componentWidth() + 'px;'"
   >
+    <!-- Clamp was already insanely usefull, the new units take that to a whole new level -->
     <span class="text-[clamp(16px,_5cqw_,60px)] font-bold"
       >Place: The only placeholder platform</span
     >
