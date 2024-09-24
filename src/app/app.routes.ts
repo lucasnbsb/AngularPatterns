@@ -26,11 +26,6 @@ export const layoutRoutes = [
     title: 'Above the fold',
     component: AboveTheFoldComponent,
   },
-  {
-    path: 'containerQueries',
-    title: 'Container Queries',
-    component: ContainerQueriesComponent,
-  },
 ];
 
 export const routes: Routes = [
@@ -65,11 +60,16 @@ export const routes: Routes = [
     pathMatch: 'full',
     title: 'Use more directives',
   },
+  // {
+  //   path: 'layoutRecipes',
+  //   title: 'All about layouts',
+  //   pathMatch: 'prefix',
+  //   children: layoutRoutes,
+  // },
   {
-    path: 'layoutRecipes',
-    title: 'All about layouts',
-    pathMatch: 'prefix',
-    children: layoutRoutes,
+    path: 'containerQueries',
+    title: 'Container Queries',
+    component: ContainerQueriesComponent,
   },
   {
     path: '',
@@ -78,3 +78,4 @@ export const routes: Routes = [
     title: 'Angular Recipes',
   },
 ];
+``;
