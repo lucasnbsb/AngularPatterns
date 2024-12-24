@@ -4,3 +4,5 @@
 @tailwind utilities;
 
 @import 'highlight.js/styles/github-dark.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

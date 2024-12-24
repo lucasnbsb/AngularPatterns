@@ -1,0 +1,57 @@
+<!-- hidden trigger -->
+<div #triggerButton class="fixed h-0 w-0" [matMenuTriggerFor]="outerMenu"></div>
+
+<!-- Outer menu gets loaded into a ViewChild for external control -->
+<mat-menu #outerMenu (close)="markMenuClosed()" hasBackdrop="true">
+  <!-- Changing the input will alter the menu even if it's opened -->
+  @for (item of menuItems(); track $index) {
+    <!-- the custom pipe treats absent values as true for the purposes of rendering, that way the conditional prop gets to be optional -->
+    @if (item.shouldRender | menuItemLoading | async; as obs) {
+      <!-- The loading indicator can be anything. -->
+      @if (obs.loading) {
+        <button mat-menu-item [disabled]="true">
+          <div class="flex items-center gap-2">
+            <span class="loading loading-spinner text-primary"></span>
+          </div>
+        </button>
+      } @else {
+        <!-- Regular recursive menu component,.  -->
+        @if ($any(obs).value) {
+          @if (item.nestedOptions?.length) {
+            <button
+              [disabled]="(item.disabled | async) === true"
+              mat-menu-item
+              [matMenuTriggerFor]="innerMenu.outerMenu"
+            >
+              <div class="flex items-center gap-2">
+                @if (item.icon) {
+                  <lucide-angular size="20" [name]="item.icon"></lucide-angular>
+                }
+                {{ item.label }}
+              </div>
+            </button>
+            <app-overlay-menu
+              #innerMenu
+              [isRoot]="false"
+              [menuItems]="item.nestedOptions"
+            ></app-overlay-menu>
+          } @else {
+            <!-- The actual menu behavior is handled in the parent component by listening to a callback event -->
+            <button
+              mat-menu-item
+              [disabled]="(item.disabled | async) === true"
+              (click)="callback.emit(item)"
+            >
+              <div class="flex items-center gap-2">
+                @if (item.icon) {
+                  <lucide-angular size="20" [name]="item.icon"></lucide-angular>
+                }
+                {{ item.label }}
+              </div>
+            </button>
+          }
+        }
+      }
+    }
+  }
+</mat-menu>

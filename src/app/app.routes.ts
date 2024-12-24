@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { DirectivesForHtmlElementsComponent } from './directives-for-html-elements/directives-for-html-elements.component';
+import { DynamicMenuComponent } from './dynamic-menu/dynamic-menu.component';
 import { AboveTheFoldComponent } from './layout-recipes/above-the-fold/above-the-fold.component';
 import { ContainerQueriesComponent } from './layout-recipes/container-queries/container-queries.component';
 import { EasyCenterComponent } from './layout-recipes/easy-center/easy-center.component';
@@ -60,16 +61,16 @@ export const routes: Routes = [
     pathMatch: 'full',
     title: 'Use more directives',
   },
-  // {
-  //   path: 'layoutRecipes',
-  //   title: 'All about layouts',
-  //   pathMatch: 'prefix',
-  //   children: layoutRoutes,
-  // },
+
   {
     path: 'containerQueries',
     title: 'Container Queries',
     component: ContainerQueriesComponent,
+  },
+  {
+    path: 'dynamicMenu',
+    title: 'Dynamic Menu',
+    component: DynamicMenuComponent,
   },
   {
     path: '',

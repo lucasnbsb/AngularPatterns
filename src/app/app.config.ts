@@ -29,6 +29,7 @@ import {
 } from 'lucide-angular';
 import { provideHighlightOptions } from 'ngx-highlightjs';
 import { routes } from './app.routes';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -68,6 +69,6 @@ export const appConfig: ApplicationConfig = {
         html: () => import('highlight.js/lib/languages/xml'),
       },
     }),
-    provideHttpClient(),
+    provideHttpClient(), provideAnimationsAsync(),
   ],
 };
