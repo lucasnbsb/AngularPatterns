@@ -2,14 +2,36 @@
   title="An actually flexible context menu component"
   [backButtonToHome]="true"
 >
-  Here's the problem. Dynamic content on menus, the more flexibility you need,
-  the less options you have:
+  <p>
+    Here's the problem. <b>Dynamic content on menus,</b> the more flexibility
+    you need, the less options you have.
+  </p>
+
+  <p>In my opinion a good solution should have the following:</p>
+
   <ol>
+    <li>Be dynamic, pass an array of menu items and get a menu</li>
+    <li>Support submenus out of the box</li>
     <li>
-      <b>MatMenu:</b> can't open programmatically through the trigger
-      directives, can't have two different menus opening from the same object
-      conditionally
+      Allow opening from a trigger element, mouse event (context menu or
+      otherwise), or just programmatically from any source
     </li>
+    <li>
+      Allow for conditional rendering of menu items asynchronously, we don't
+      want to wait for our authorization system to return to open the menu
+    </li>
+    <li>
+      Minimize layout shifts whenever possible by rendering a loading
+      placeholder
+    </li>
+    <li>Be accessible, support keyboard navigation</li>
+    <li>React to it's position in the screen automatically</li>
+    <li>Keep dependencies limited to angular material and the cdk</li>
+  </ol>
+
+  So that leaves us with 3 options:
+
+  <ol>
     <li>
       <b>CdkOverlay:</b> you have to build everything, submenus, position,
       behavior on detach, etc
@@ -19,37 +41,18 @@
       heavily tied into the context of the rest of the menu, the api is very
       unhelpful if you stray from the examples
     </li>
-  </ol>
-
-  In my opinion a good solution should have the following:
-  <ol>
-    <li>Be dynamic, pass an array of menu items and get a menu</li>
-    <li>Support submenus out of the box, no extra handling events</li>
     <li>
-      Allow opening from a trigger element, mouse event (context menu or
-      otherwise), or just programmatically from any source
-    </li>
-    <li>
-      Allow for conditionally rendering menu items asynchronously, we don't want
-      to wait for our authorization system to return to open the menu, don't tie
-      behavior into inner directives state
-    </li>
-    <li>
-      Minimize layout shifts from conditional rendering by showing a loading
-      placeholder
-    </li>
-    <li>Be accessible, support keyboard navigation</li>
-    <li>React to it's position in the screen automatically</li>
-    <li>
-      Not introducing a new dependency, we got a six months release schedule to
-      keep up with
+      <b>MatMenu:</b> not really meant to be used as a context menu, so opening
+      it has to be done through the trigger directive. But other than that it
+      fullfills all of the requirements
     </li>
   </ol>
 
   <p>
-    So here's the solution. Wrap mat-menu into a component that shift around a
-    hidden element with the trigger for the menu to allow for programmatic
-    opening and do some RxJs magic to conditionally render the menu items.
+    So here's the solution. Wrap <code>mat-menu</code> into a component that
+    shifts around a hidden element with the trigger for the menu to allow for
+    programmatic opening and do some RxJs magic to conditionally render the menu
+    items.
   </p>
 
   <p>
@@ -57,6 +60,7 @@
     conditions being pre-warmed before opening the menu
   </p>
 
+  <!-- This is the only footprint of the menu in the dom -->
   <app-overlay-menu #reusableMenu [menuItems]="menuItems"></app-overlay-menu>
 
   <div class="flex items-center gap-4">

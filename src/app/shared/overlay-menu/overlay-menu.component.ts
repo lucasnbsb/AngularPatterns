@@ -30,6 +30,7 @@ import { CustomWithLoadingPipe } from '../pipes/with-loading-pipe.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverlayMenuComponent {
+  // All of these need to be resolved statically to be referenced by parent components
   @ViewChild('outerMenu', { static: true }) outerMenu!: MatMenu;
   @ViewChild(MatMenuTrigger, { static: true })
   outerMenuTrigger!: MatMenuTrigger;
@@ -39,12 +40,13 @@ export class OverlayMenuComponent {
   menuItems = input<MenuItem[]>();
   isRoot = input<boolean>(true);
 
-  isProgramaticalyOpened$$ = signal(false);
-
   callback = new EventEmitter<MenuItem>();
 
   renderer = inject(Renderer2);
 
+  isProgramaticalyOpened$$ = signal(false);
+
+  // Close the menu if the user scrolls the page when it opens without an anchor to a trigger
   @HostListener('document:scroll', ['$event'])
   closeMenuIfProgramaticalyOpened(event: Event) {
     if (this.isProgramaticalyOpened$$()) {
