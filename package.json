@@ -25,6 +25,7 @@
     "@angular/router": "^18.2.3",
     "@ngneat/falso": "^7.2.0",
     "@tailwindcss/container-queries": "^0.1.1",
+    "@tanstack/angular-table": "^8.20.5",
     "highlight.js": "^11.10.0",
     "lucide-angular": "^0.439.0",
     "ngx-highlightjs": "^12.0.0",

@@ -8,6 +8,7 @@ import { LayoutRecipesComponent } from './layout-recipes/layout-recipes.componen
 import { LoadingIndicationComponent } from './loading-indication/loading-indication.component';
 import { MenuComponent } from './menu/menu.component';
 import { SendRequestIfInactiveForTimeComponent } from './send-request-if-inactive-for-time/send-request-if-inactive-for-time.component';
+import { TanstackTableComponent } from './tanstack-table/tanstack-table.component';
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 import { UsefullPipesComponent } from './usefull-pipes/usefull-pipes.component';
 
@@ -66,6 +67,11 @@ export const routes: Routes = [
     path: 'containerQueries',
     title: 'Container Queries',
     component: ContainerQueriesComponent,
+  },
+  {
+    path: 'tanstackTable',
+    title: 'Tanstack table',
+    component: TanstackTableComponent,
   },
   {
     path: 'dynamicMenu',
