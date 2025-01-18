@@ -1,14 +1,19 @@
 @if (text().length) {
-  <span
-    class="flex w-full items-center justify-between gap-1 text-xl font-bold"
-  >
-    <i>{{ filename() }}</i>
-    <button class="btn btn-ghost" (click)="closeClicked.emit()">
-      <lucide-icon name="x"></lucide-icon>
-    </button>
-  </span>
+  <div class="max-w-[calc(100vw-1.5rem)]">
+    <span
+      class="flex w-full items-center justify-between text-base font-bold sm:text-lg"
+    >
+      <i>{{ filename() }}</i>
+      <button
+        class="btn btn-ghost btn-sm md:btn-md"
+        (click)="closeClicked.emit()"
+      >
+        <lucide-icon name="x"></lucide-icon>
+      </button>
+    </span>
 
-  <pre
-    class="whitespace-pre-wrap"
-  ><code [highlight]="text()" [language]="language() ?? 'typescript'"></code></pre>
+    <pre
+      class="max-w-full whitespace-pre-wrap text-xs"
+    ><code [highlight]="text()" [language]="language() ?? 'typescript'"></code></pre>
+  </div>
 }

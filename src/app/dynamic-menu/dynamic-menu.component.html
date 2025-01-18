@@ -63,7 +63,7 @@
   <!-- This is the only footprint of the menu in the dom -->
   <app-overlay-menu #reusableMenu [menuItems]="menuItems"></app-overlay-menu>
 
-  <div class="flex items-center gap-4">
+  <div class="flex flex-wrap items-center gap-4">
     <div
       class="w-fit rounded-lg border-2 border-dashed border-primary p-2"
       (contextmenu)="$event.preventDefault(); triggerMenu($event)"
