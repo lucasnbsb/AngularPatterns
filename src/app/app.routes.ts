@@ -67,11 +67,21 @@ export const routes: Routes = [
     title: 'Container Queries',
     component: ContainerQueriesComponent,
   },
+  // {
+  //   path: 'tanstackTable',
+  //   title: 'Tanstack table',
+  //   component: TanstackTableComponent,
+  // },
   {
     path: 'dynamicMenu',
     title: 'Dynamic Menu',
     component: DynamicMenuComponent,
   },
+  // {
+  //   path: 'reverseContentProjection',
+  //   title: 'Reverse content projection',
+  //   component: ReverseContentProjectionComponent,
+  // },
   {
     path: '',
     component: MenuComponent,
@@ -79,4 +89,3 @@ export const routes: Routes = [
     title: 'Angular Recipes',
   },
 ];
-``;

@@ -1,0 +1,65 @@
+<table class="table">
+  <thead>
+    <tr>
+      @for (header of table.getFlatHeaders(); track header.id) {
+        <th [attr.colSpan]="header.colSpan">
+          {{ header.column.columnDef.header }}
+        </th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of table.getRowModel().rows; track row.id) {
+      <tr>
+        @for (cell of row.getVisibleCells(); track cell.id) {
+          <td>
+            <ng-container
+              *flexRender="
+                cell.column.columnDef.cell;
+                props: cell.getContext();
+                let cell
+              "
+            >
+              {{ cell }}
+            </ng-container>
+          </td>
+        }
+      </tr>
+    }
+  </tbody>
+
+  <div class="join">
+    <button
+      class="btn join-item btn-sm"
+      (click)="table.previousPage()"
+      [disabled]="!table.getCanPreviousPage()"
+    >
+      <
+    </button>
+    <button class="btn join-item btn-sm">
+      <div>Page</div>
+      <strong>
+        {{ table.getState().pagination.pageIndex + 1 }} of
+        {{ table.getPageCount() }}
+      </strong>
+    </button>
+    <button
+      class="btn join-item btn-sm"
+      (click)="table.nextPage()"
+      [disabled]="!table.getCanNextPage()"
+    >
+      >
+    </button>
+
+    <select
+      class="join-item select select-sm max-w-sm"
+      [value]="table.getState().pagination.pageSize"
+      (change)="onPageSizeChange($event)"
+    >
+      @for (pageSize of [10, 20, 30, 40, 50]; track pageSize) {
+        <option [value]="pageSize">Show {{ pageSize }}</option>
+      }
+    </select>
+  </div>
+  <div class="flex items-center gap-2"></div>
+</table>

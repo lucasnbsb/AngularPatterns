@@ -1,6 +1,11 @@
 <app-card-layout title="Loading indicators">
   <div class="prose flex flex-col">
     <p>
+      With some clever use of mergeMap, we can create an observable that when
+      wrapped around another observable will control a loading flag. We pair
+      this to a record of keys to allow for fine-grained loader control.
+    </p>
+    <p>
       Clicking a button will trigger a {{ loadingDelay }} second delay. Any
       observable can be wrapped in the utility methods and the loaders with be
       signaled through the subjects automatically
