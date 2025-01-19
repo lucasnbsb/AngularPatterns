@@ -10,7 +10,7 @@
     notification, and there is a designated slot to receive content like action
     buttons. The child components will have the business logic, and that might
     affect how these action buttons behave, being disabled, hidden or just
-    chaning according to some inner state of the child component.
+    changing according to some inner state of the child component.
   </p>
   <p>
     One solution would be to
@@ -21,9 +21,10 @@
     logic escaping the boundaries of the child component.
   </p>
   <p class="text-lg font-bold">
-    With reverse content projection you just send the whole button from the
+    With reverse content projection, you just send the whole button from the
     child component, logic and all.
   </p>
+  <p>You get a cleaner, way more portable component, that works everywhere</p>
   <app-rcp-parent-layout-component>
     <app-rcp-child-component #child> </app-rcp-child-component>
     <!-- Surprise, reverse content projection uses regular content projection as well -->
@@ -32,4 +33,6 @@
       <ng-container *ngTemplateOutlet="child.actionButtons()"></ng-container>
     </footer>
   </app-rcp-parent-layout-component>
+
+  <app-external-code-panel [references]="references"></app-external-code-panel>
 </app-card-layout>

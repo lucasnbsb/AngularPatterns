@@ -25,10 +25,12 @@ export class FormGroupValidationsComponent {
     {
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/form-group-validations/form-group-validations.component.ts',
       title: 'the component',
+      language: 'typescript',
     },
     {
       title: 'the validator',
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/validators/age-drivers-licence-validator.directive.ts',
+      language: 'typescript',
     },
   ];
 

@@ -29,14 +29,17 @@ export class DynamicMenuComponent {
     {
       title: 'Component',
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/overlay-menu/overlay-menu.component.ts',
+      language: 'typescript',
     },
     {
       title: `Component's template`,
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/overlay-menu/overlay-menu.component.html',
+      language: 'html',
     },
     {
       title: 'Custom pipe',
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/pipes/with-loading-pipe.pipe.ts',
+      language: 'typescript',
     },
   ];
 

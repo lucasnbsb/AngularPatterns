@@ -36,6 +36,7 @@ export class SendRequestIfInactiveForTimeComponent {
     {
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/send-request-if-inactive-for-time/send-request-if-inactive-for-time.component.ts',
       title: 'this component',
+      language: 'typescript',
     },
   ];
 

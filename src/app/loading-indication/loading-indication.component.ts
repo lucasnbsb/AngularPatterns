@@ -36,10 +36,12 @@ export class LoadingIndicationComponent {
     {
       title: 'the service',
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/shared/services/loading.service.ts',
+      language: 'typescript',
     },
     {
       title: 'the component',
       url: 'https://raw.githubusercontent.com/lucasnbsb/AngularPatterns/main/src/app/loading-indication/loading-indication.component.ts',
+      language: 'typescript',
     },
   ];
 
