@@ -7,6 +7,7 @@ import { EasyCenterComponent } from './layout-recipes/easy-center/easy-center.co
 import { LayoutRecipesComponent } from './layout-recipes/layout-recipes.component';
 import { LoadingIndicationComponent } from './loading-indication/loading-indication.component';
 import { MenuComponent } from './menu/menu.component';
+import { ReverseContentProjectionComponent } from './reverse-content-projection/reverse-content-projection.component';
 import { SendRequestIfInactiveForTimeComponent } from './send-request-if-inactive-for-time/send-request-if-inactive-for-time.component';
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 import { UsefullPipesComponent } from './usefull-pipes/usefull-pipes.component';
@@ -77,11 +78,11 @@ export const routes: Routes = [
     title: 'Dynamic Menu',
     component: DynamicMenuComponent,
   },
-  // {
-  //   path: 'reverseContentProjection',
-  //   title: 'Reverse content projection',
-  //   component: ReverseContentProjectionComponent,
-  // },
+  {
+    path: 'reverseContentProjection',
+    title: 'Reverse content projection',
+    component: ReverseContentProjectionComponent,
+  },
   {
     path: '',
     component: MenuComponent,

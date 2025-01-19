@@ -1,0 +1,18 @@
+<div class="m-1 h-auto border border-accent p-2">
+  <b>Child component content and state</b>
+  <label class="label cursor-pointer">
+    <span class="label-text">Some internal state disables the buttons</span>
+    <input
+      [(ngModel)]="disableButtons"
+      type="checkbox"
+      class="toggle toggle-primary"
+    />
+  </label>
+</div>
+<!-- Create a template for the content to be reverse-projected, any conditionals need to go inside the template-->
+<ng-template #actionButtons>
+  <!-- The inside of the template can freely reference internal public state from the child component -->
+  <button class="btn btn-primary btn-sm md:btn-md" [disabled]="disableButtons">
+    Button from the child
+  </button>
+</ng-template>

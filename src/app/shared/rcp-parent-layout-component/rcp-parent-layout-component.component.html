@@ -1,0 +1,12 @@
+<div class="flex h-full w-full flex-col justify-between">
+  <div class="bg-accent-100 h-auto w-full border border-dashed border-primary">
+    <span class="text-xl font-bold">Parent component content</span>
+    <ng-content></ng-content>
+  </div>
+  <footer
+    class="flex h-auto w-full flex-row flex-wrap justify-between gap-1 border border-dashed border-secondary pt-2 text-xs sm:text-sm"
+  >
+    <span class="text-wrap">Content projection slot in the parent:</span>
+    <ng-content select="[parentFooter]"></ng-content>
+  </footer>
+</div>

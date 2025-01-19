@@ -1,1 +1,35 @@
-<app-card-layout title="Reverse content projection"></app-card-layout>
+<app-card-layout title="Reverse content projection">
+  <p>
+    Content projection saves a lot of time and money. It allows us to push reuse
+    by allowing parent components to push content into child components. But the
+    reverse is also possible, and that opens a lot of possibilities.
+  </p>
+  <p>
+    So here's the most common use case, you have a layout component for a
+    specific type of workflow. It can be a dialog layout, a sidebar, even a
+    notification, and there is a designated slot to receive content like action
+    buttons. The child components will have the business logic, and that might
+    affect how these action buttons behave, being disabled, hidden or just
+    chaning according to some inner state of the child component.
+  </p>
+  <p>
+    One solution would be to
+    <i>
+      add buttons to the layout component and listen to outputs from the child
+      event to update the state of these buttons </i
+    >. That leads to a lot of boilerplate code passing around props and business
+    logic escaping the boundaries of the child component.
+  </p>
+  <p class="text-lg font-bold">
+    With reverse content projection you just send the whole button from the
+    child component, logic and all.
+  </p>
+  <app-rcp-parent-layout-component>
+    <app-rcp-child-component #child> </app-rcp-child-component>
+    <!-- Surprise, reverse content projection uses regular content projection as well -->
+    <footer parentFooter class="flex items-center justify-end gap-1">
+      <!-- If you are using the new viewChild method remember that the query result is a signal -->
+      <ng-container *ngTemplateOutlet="child.actionButtons()"></ng-container>
+    </footer>
+  </app-rcp-parent-layout-component>
+</app-card-layout>
