@@ -14,11 +14,10 @@ export interface ExternalCodeReference {
 }
 
 @Component({
-  selector: 'app-external-code-panel',
-  standalone: true,
-  imports: [ExternalHighlightedCodeComponent, LucideAngularModule],
-  templateUrl: './external-code-panel.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-external-code-panel',
+    imports: [ExternalHighlightedCodeComponent, LucideAngularModule],
+    templateUrl: './external-code-panel.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExternalCodePanelComponent {
   references = input.required<ExternalCodeReference[]>();

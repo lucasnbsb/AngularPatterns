@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
-  selector: 'app-card-layout',
-  standalone: true,
-  imports: [RouterModule, LucideAngularModule, CommonModule],
-  templateUrl: './card-layout.component.html',
+    selector: 'app-card-layout',
+    imports: [RouterModule, LucideAngularModule, CommonModule],
+    templateUrl: './card-layout.component.html'
 })
 export class CardLayoutComponent {
   title = input.required<string>();

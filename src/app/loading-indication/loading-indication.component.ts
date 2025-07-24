@@ -10,15 +10,14 @@ import {
 } from './../shared/external-code-panel/external-code-panel.component';
 
 @Component({
-  selector: 'app-loading-indication',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    CardLayoutComponent,
-    ExternalCodePanelComponent,
-  ],
-  templateUrl: './loading-indication.component.html',
+    selector: 'app-loading-indication',
+    imports: [
+        CommonModule,
+        RouterModule,
+        CardLayoutComponent,
+        ExternalCodePanelComponent,
+    ],
+    templateUrl: './loading-indication.component.html'
 })
 export class LoadingIndicationComponent {
   constructor(private loading: LoadingService) {}

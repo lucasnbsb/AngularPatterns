@@ -6,16 +6,15 @@ import { CardLayoutComponent } from '../shared/components/card-layout/card-layou
 import { ExternalHighlightedCodeComponent } from './../shared/components/external-highlighted-code/external-highlighted-code.component';
 
 @Component({
-  selector: 'app-menu',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    CardLayoutComponent,
-    NgOptimizedImage,
-    ExternalHighlightedCodeComponent,
-  ],
-  templateUrl: './menu.component.html',
+    selector: 'app-menu',
+    imports: [
+        CommonModule,
+        RouterModule,
+        CardLayoutComponent,
+        NgOptimizedImage,
+        ExternalHighlightedCodeComponent,
+    ],
+    templateUrl: './menu.component.html'
 })
 export class MenuComponent {
   today = new Date();

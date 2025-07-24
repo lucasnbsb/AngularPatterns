@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [RouterModule, NgOptimizedImage, LucideAngularModule],
-  templateUrl: './header.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-header',
+    imports: [RouterModule, NgOptimizedImage, LucideAngularModule],
+    templateUrl: './header.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {}

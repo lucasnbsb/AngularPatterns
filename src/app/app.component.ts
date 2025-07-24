@@ -5,16 +5,15 @@ import { LucideAngularModule } from 'lucide-angular';
 import { HeaderComponent } from './shared/components/header/header.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    RouterModule,
-    NgOptimizedImage,
-    HeaderComponent,
-    LucideAngularModule,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        RouterModule,
+        NgOptimizedImage,
+        HeaderComponent,
+        LucideAngularModule,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {}

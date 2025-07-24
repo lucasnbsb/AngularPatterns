@@ -17,17 +17,16 @@ import { LucideAngularModule } from 'lucide-angular';
 import { MenuItem } from '../constants/menu-items';
 import { CustomWithLoadingPipe } from '../pipes/with-loading-pipe.pipe';
 @Component({
-  selector: 'app-overlay-menu',
-  standalone: true,
-  imports: [
-    MatMenuModule,
-    MatIconModule,
-    LucideAngularModule,
-    AsyncPipe,
-    CustomWithLoadingPipe,
-  ],
-  templateUrl: './overlay-menu.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-overlay-menu',
+    imports: [
+        MatMenuModule,
+        MatIconModule,
+        LucideAngularModule,
+        AsyncPipe,
+        CustomWithLoadingPipe,
+    ],
+    templateUrl: './overlay-menu.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OverlayMenuComponent {
   // All of these need to be resolved statically to be referenced by parent components

@@ -10,11 +10,10 @@ import {
 import { LookupRecord } from './../../pipes/lookup-table.pipe';
 
 @Component({
-  selector: 'app-lookup-table',
-  standalone: true,
-  imports: [LucideAngularModule, LookupTablePipe],
-  templateUrl: './lookup-table.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-lookup-table',
+    imports: [LucideAngularModule, LookupTablePipe],
+    templateUrl: './lookup-table.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LookupTableComponent {
   lookupPojo = LookupPojo;

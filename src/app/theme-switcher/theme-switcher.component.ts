@@ -7,10 +7,9 @@ import {
 import { ThemeService } from '../shared/services/theme.service';
 
 @Component({
-  selector: 'app-theme-switcher',
-  standalone: true,
-  imports: [CardLayoutComponent, ExternalCodePanelComponent],
-  templateUrl: './theme-switcher.component.html',
+    selector: 'app-theme-switcher',
+    imports: [CardLayoutComponent, ExternalCodePanelComponent],
+    templateUrl: './theme-switcher.component.html'
 })
 export class ThemeSwitcherComponent {
   references: ExternalCodeReference[] = [

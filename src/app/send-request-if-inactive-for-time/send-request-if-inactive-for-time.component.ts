@@ -19,11 +19,10 @@ import { CardLayoutComponent } from '../shared/components/card-layout/card-layou
 import { ExternalCodeReference } from '../shared/external-code-panel/external-code-panel.component';
 
 @Component({
-  selector: 'app-send-request-if-inactive-for-time',
-  standalone: true,
-  imports: [CommonModule, CardLayoutComponent, ExternalCodePanelComponent],
-  templateUrl: './send-request-if-inactive-for-time.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-send-request-if-inactive-for-time',
+    imports: [CommonModule, CardLayoutComponent, ExternalCodePanelComponent],
+    templateUrl: './send-request-if-inactive-for-time.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SendRequestIfInactiveForTimeComponent {
   sourceSubject$ = new Subject<void>();

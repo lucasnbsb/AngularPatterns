@@ -5,15 +5,14 @@ import { ExternalCodePanelComponent } from '../shared/external-code-panel/extern
 import { ExternalCodeReference } from './../shared/external-code-panel/external-code-panel.component';
 
 @Component({
-  selector: 'app-directives-for-html-elements',
-  standalone: true,
-  imports: [
-    CardLayoutComponent,
-    CustomButtonDirective,
-    ExternalCodePanelComponent,
-  ],
-  templateUrl: './directives-for-html-elements.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-directives-for-html-elements',
+    imports: [
+        CardLayoutComponent,
+        CustomButtonDirective,
+        ExternalCodePanelComponent,
+    ],
+    templateUrl: './directives-for-html-elements.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DirectivesForHtmlElementsComponent {
   references: ExternalCodeReference[] = [

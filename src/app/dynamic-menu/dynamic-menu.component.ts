@@ -9,16 +9,15 @@ import {
 } from './../shared/external-code-panel/external-code-panel.component';
 
 @Component({
-  selector: 'app-dynamic-menu',
-  standalone: true,
-  imports: [
-    CardLayoutComponent,
-    OverlayMenuComponent,
-    MatMenuModule,
-    ExternalCodePanelComponent,
-  ],
-  templateUrl: './dynamic-menu.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-dynamic-menu',
+    imports: [
+        CardLayoutComponent,
+        OverlayMenuComponent,
+        MatMenuModule,
+        ExternalCodePanelComponent,
+    ],
+    templateUrl: './dynamic-menu.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DynamicMenuComponent {
   @ViewChild(OverlayMenuComponent, { static: true })

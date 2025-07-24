@@ -19,20 +19,19 @@ import {
 import { CardLayoutComponent } from './../../shared/components/card-layout/card-layout.component';
 
 @Component({
-  selector: 'app-container-queries',
-  standalone: true,
-  imports: [
-    CardLayoutComponent,
-    LucideAngularModule,
-    ReactiveFormsModule,
-    FormsModule,
-    LayoutModule,
-    HighlightModule,
-    ExternalLinkComponent,
-    CommonModule,
-  ],
-  templateUrl: './container-queries.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-container-queries',
+    imports: [
+        CardLayoutComponent,
+        LucideAngularModule,
+        ReactiveFormsModule,
+        FormsModule,
+        LayoutModule,
+        HighlightModule,
+        ExternalLinkComponent,
+        CommonModule,
+    ],
+    templateUrl: './container-queries.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContainerQueriesComponent implements OnInit {
   maxWidth = signal(320);

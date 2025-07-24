@@ -13,11 +13,10 @@ import { LucideAngularModule } from 'lucide-angular';
 import { Highlight } from 'ngx-highlightjs';
 
 @Component({
-  selector: 'app-external-highlighted-code',
-  standalone: true,
-  imports: [Highlight, CommonModule, LucideAngularModule],
-  templateUrl: './external-highlighted-code.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-external-highlighted-code',
+    imports: [Highlight, CommonModule, LucideAngularModule],
+    templateUrl: './external-highlighted-code.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExternalHighlightedCodeComponent {
   link = input.required<string>();

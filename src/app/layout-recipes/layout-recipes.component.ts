@@ -10,11 +10,10 @@ import { layoutRoutes } from '../app.routes';
 import { CardLayoutComponent } from '../shared/components/card-layout/card-layout.component';
 
 @Component({
-  selector: 'app-layout-recipes',
-  standalone: true,
-  imports: [CardLayoutComponent, RouterLink, RouterOutlet, CommonModule],
-  templateUrl: './layout-recipes.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-layout-recipes',
+    imports: [CardLayoutComponent, RouterLink, RouterOutlet, CommonModule],
+    templateUrl: './layout-recipes.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutRecipesComponent {
   router = inject(Router);

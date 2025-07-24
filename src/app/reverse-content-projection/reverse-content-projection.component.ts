@@ -9,17 +9,16 @@ import { RcpChildComponentComponent } from '../shared/rcp-child-component/rcp-ch
 import { RcpParentLayoutComponentComponent } from '../shared/rcp-parent-layout-component/rcp-parent-layout-component.component';
 
 @Component({
-  selector: 'app-reverse-content-projection',
-  standalone: true,
-  imports: [
-    CommonModule,
-    CardLayoutComponent,
-    RcpParentLayoutComponentComponent,
-    RcpChildComponentComponent,
-    ExternalCodePanelComponent,
-  ],
-  templateUrl: './reverse-content-projection.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-reverse-content-projection',
+    imports: [
+        CommonModule,
+        CardLayoutComponent,
+        RcpParentLayoutComponentComponent,
+        RcpChildComponentComponent,
+        ExternalCodePanelComponent,
+    ],
+    templateUrl: './reverse-content-projection.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReverseContentProjectionComponent {
   references: ExternalCodeReference[] = [

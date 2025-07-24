@@ -31,26 +31,25 @@ export type usefullPipes =
   | 'lookupTable';
 
 @Component({
-  selector: 'app-usefull-pipes',
-  standalone: true,
-  imports: [
-    CardLayoutComponent,
-    PaginateArrayPipe,
-    CommonModule,
-    PossessiveFormPipe,
-    QuickSearchPipe,
-    FormsModule,
-    TimeframeInMinutesPipe,
-    OffsetByBusinessDaysPipe,
-    ArrayAsTextPipe,
-    TimeAgoPipe,
-    LookupTablePipe,
-    ExternalCodePanelComponent,
-    LucideAngularModule,
-    LookupTableComponent,
-  ],
-  templateUrl: './usefull-pipes.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-usefull-pipes',
+    imports: [
+        CardLayoutComponent,
+        PaginateArrayPipe,
+        CommonModule,
+        PossessiveFormPipe,
+        QuickSearchPipe,
+        FormsModule,
+        TimeframeInMinutesPipe,
+        OffsetByBusinessDaysPipe,
+        ArrayAsTextPipe,
+        TimeAgoPipe,
+        LookupTablePipe,
+        ExternalCodePanelComponent,
+        LucideAngularModule,
+        LookupTableComponent,
+    ],
+    templateUrl: './usefull-pipes.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsefullPipesComponent {
   labels: Record<usefullPipes, string> = {
