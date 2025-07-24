@@ -2,7 +2,7 @@
   [title]="showView() ? labels[showView()!] : 'Pipes'"
   [backButtonToHome]="!showView()"
   (backClicked)="show()"
->
+  >
   @switch (showView()) {
     @case ('paginateArray') {
       <p>
@@ -21,7 +21,7 @@
           class="btn join-item"
           [disabled]="pageIndex() <= 1"
           (click)="pageIndex.set(pageIndex() - 1)"
-        >
+          >
           «
         </button>
         <button class="btn join-item">Page {{ pageIndex() }}</button>
@@ -29,7 +29,7 @@
           class="btn join-item"
           [disabled]="pageIndex() >= arrayForPagination.length / pageSize"
           (click)="pageIndex.set(pageIndex() + 1)"
-        >
+          >
           »
         </button>
       </div>
@@ -47,15 +47,17 @@
           class="input input-bordered w-full max-w-xs"
           [(ngModel)]="searchTerm"
           placeholder="Search term"
-        />
+          />
         <div class="flex h-96 flex-col gap-2 overflow-y-auto">
-          <div
-            *ngFor="
-              let item of arrayForSearch | quickSearch: searchTerm() : 'name'
-            "
-          >
-            {{ item.name }}
-          </div>
+          @for (
+            item of arrayForSearch | quickSearch: searchTerm() : 'name'
+            ; track
+            item) {
+            <div
+              >
+              {{ item.name }}
+            </div>
+          }
         </div>
       </div>
     }
@@ -105,45 +107,45 @@
           class="input input-xs input-bordered"
           [(ngModel)]="businessDays"
           placeholder="Business days"
-        />
+          />
         <span
           >Business days =
           {{ today | offsetByBusinessDays: businessDays() | date }}</span
-        >
-        {{ businessDays() | json }}
-      </p>
+          >
+          {{ businessDays() | json }}
+        </p>
+      }
+
+      @case ('timeAgo') {
+        <p>Use case: usually to show the age of a notification</p>
+        <p>You have a date and wants to print how long ago it was</p>
+        <span>{{ today | date }} ➡️ {{ today | timeAgo }}</span>
+        <span>{{ lastWeek | date }} ➡️ {{ lastWeek | timeAgo }}</span>
+        <span>{{ lastMonth | date }} ➡️ {{ lastMonth | timeAgo }}</span>
+      }
+
+      @case ('lookupTable') {
+        <app-lookup-table></app-lookup-table>
+      }
+
+      @default {
+        <p>
+          If you search for '|' in your templates and don't find hundreds, your
+          app will be slow one day
+        </p>
+        <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          @for (key of keys; track $index) {
+            <button class="btn btn-outline btn-lg" (click)="show(key)">
+              {{ labels[key] | titlecase }}
+            </button>
+          }
+        </div>
+      }
     }
 
-    @case ('timeAgo') {
-      <p>Use case: usually to show the age of a notification</p>
-      <p>You have a date and wants to print how long ago it was</p>
-      <span>{{ today | date }} ➡️ {{ today | timeAgo }}</span>
-      <span>{{ lastWeek | date }} ➡️ {{ lastWeek | timeAgo }}</span>
-      <span>{{ lastMonth | date }} ➡️ {{ lastMonth | timeAgo }}</span>
+    @if (showView()) {
+      <app-external-code-panel
+        [references]="references[showView()!]"
+      ></app-external-code-panel>
     }
-
-    @case ('lookupTable') {
-      <app-lookup-table></app-lookup-table>
-    }
-
-    @default {
-      <p>
-        If you search for '|' in your templates and don't find hundreds, your
-        app will be slow one day
-      </p>
-      <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        @for (key of keys; track $index) {
-          <button class="btn btn-outline btn-lg" (click)="show(key)">
-            {{ labels[key] | titlecase }}
-          </button>
-        }
-      </div>
-    }
-  }
-
-  @if (showView()) {
-    <app-external-code-panel
-      [references]="references[showView()!]"
-    ></app-external-code-panel>
-  }
-</app-card-layout>
+  </app-card-layout>

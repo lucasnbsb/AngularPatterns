@@ -33,21 +33,25 @@
     <ng-template #timeline let-counter>
       <ul
         class="timelane-horizontal wx-auto timeline timeline-compact px-0 py-0"
-      >
+        >
         @for (
           item of [0, 1, 2, 3, 4];
           track item;
           let i = $index;
           let first = $first;
           let last = $last
-        ) {
+          ) {
           <li class="p-0">
-            <hr [class.bg-primary]="i < counter" *ngIf="!first" />
+            @if (!first) {
+              <hr [class.bg-primary]="i < counter" />
+            }
             <div class="timeline-middle">
               {{ i < counter ? (last ? '🚀' : '🟦') : '⬜️' }}
             </div>
             <div class="timeline-end timeline-box">{{ item }}</div>
-            <hr [class.bg-primary]="i + 1 < counter" *ngIf="!last" />
+            @if (!last) {
+              <hr [class.bg-primary]="i + 1 < counter" />
+            }
           </li>
         }
       </ul>

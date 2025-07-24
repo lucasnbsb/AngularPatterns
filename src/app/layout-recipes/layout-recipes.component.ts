@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   ActivatedRoute,
@@ -11,7 +11,7 @@ import { CardLayoutComponent } from '../shared/components/card-layout/card-layou
 
 @Component({
     selector: 'app-layout-recipes',
-    imports: [CardLayoutComponent, RouterLink, RouterOutlet, CommonModule],
+    imports: [CardLayoutComponent, RouterLink, RouterOutlet],
     templateUrl: './layout-recipes.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
